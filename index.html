@@ -51,3 +51,701 @@ button{border:1px solid var(--gold);background:white;padding:10px 13px}
 .hero h1{font:clamp(42px,6vw,72px)/1.08 Georgia,serif;font-weight:normal;margin:20px 0}
 .hero p{line-height:1.8;color:#ddd;max-width:480px}
 .hero button{margin-top:18px;padding:14px 23px}
+
+section{padding:55px 5%}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title h2{font:36px Georgia,serif;font-weight:normal;margin:12px 0}
+.section-title p{font-size:14px;color:#777}
+
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.category{
+  height:175px;position:relative;display:flex;align-items:end;
+  padding:18px;color:white;overflow:hidden;background:#222
+}
+.category img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.65;transition:.4s}
+.category:hover img{transform:scale(1.08)}
+.category b{position:relative;font:23px Georgia,serif}
+
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}
+.toolbar input,.toolbar select{padding:12px;border:1px solid #ddd;background:white}
+.toolbar input{flex:1;min-width:170px}
+
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{border:1px solid #eee;background:white;position:relative}
+.product-image{position:relative;background:#f7f4ef}
+.product-image img{width:100%;height:250px;object-fit:cover;display:block}
+.heart{
+  position:absolute;right:10px;top:10px;background:#fff;border:0;
+  border-radius:50%;width:35px;height:35px;font-size:19px
+}
+.badge{position:absolute;left:10px;top:10px;background:#111;color:#fff;padding:6px 8px;font-size:10px}
+.product-info{padding:14px}
+.product h3{font:18px Georgia,serif;margin:0 0 8px}
+.product .category-name{font-size:11px;color:#888}
+.price{font-weight:bold;margin-top:10px}
+.old-price{font-size:12px;color:#999;text-decoration:line-through;margin-left:7px}
+.product-actions{display:flex;gap:7px;margin-top:13px}
+.product-actions button{flex:1;padding:10px 5px;font-size:11px}
+
+.benefits{background:#f8f5ef;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.benefit h3{font:20px Georgia,serif}
+.benefit p{font-size:12px;color:#777;line-height:1.7}
+
+.story{background:#111;color:white;text-align:center}
+.story p{max-width:720px;margin:20px auto;color:#ccc;line-height:1.9}
+.story h2{font:38px Georgia,serif;font-weight:normal}
+
+.newsletter{background:#f8f5ef;text-align:center}
+.newsletter input{max-width:350px;padding:13px;border:1px solid #ddd}
+footer{background:#080808;color:#ccc;padding:40px 5%;font-size:13px;line-height:1.9}
+footer h2{font:25px Georgia,serif;color:#e5cc8e}
+footer a{color:#e5cc8e}
+
+.whatsapp{
+  position:fixed;right:16px;bottom:16px;background:#16834b;color:white;
+  border-radius:30px;padding:14px 18px;z-index:30
+}
+
+.overlay{
+  display:none;position:fixed;inset:0;background:#0009;z-index:50;
+  align-items:center;justify-content:center;padding:15px
+}
+.overlay.show{display:flex}
+.modal{background:white;padding:22px;width:min(700px,100%);max-height:90vh;overflow:auto}
+.modal-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee}
+.modal-header h2{font:28px Georgia,serif}
+.close{border:0;font-size:25px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #eee}
+.row img{width:55px;height:55px;object-fit:cover}
+.modal label{display:block;font-size:12px;color:#555;margin-top:10px}
+.modal input,.modal textarea,.modal select{width:100%;padding:12px;border:1px solid #ddd;margin:5px 0}
+.notice{background:#fff4d5;padding:12px;font-size:12px;line-height:1.6;margin:12px 0}
+.toast{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:#111;color:white;padding:12px 18px;display:none;z-index:80}
+
+.admin{display:none;background:#fafafa;padding:25px 5%}
+.admin.show{display:block}
+.admin-nav{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.admin-nav button{background:#222;color:white}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{padding:10px;border-bottom:1px solid #ddd;text-align:left}
+th{background:#f1e8d6}
+
+@media(max-width:900px){
+  nav{display:none}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .categories{grid-template-columns:repeat(3,1fr)}
+  .benefits{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+  header{padding:12px 3%}
+  .logo{font-size:17px}
+  .hero{min-height:410px}
+  .products{gap:10px}
+  .product-image img{height:180px}
+  .product-actions{flex-direction:column}
+  .categories{grid-template-columns:repeat(2,1fr)}
+  .category{height:140px}
+  section{padding:40px 4%}
+  .section-title h2{font-size:30px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement" id="announcement">
+  ✨ WHERE ELEGANCE MEETS TRADITION ✨
+</div>
+
+<header>
+  <a href="#" class="logo">MH HUDLI<span>JEWELLERY</span></a>
+
+  <nav>
+    <a href="#collections">Collections</a>
+    <a href="#shop">Shop</a>
+    <a href="#story">Our Story</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="header-actions">
+    <button class="icon-btn" onclick="openWishlist()">♡ <span id="wishCount">0</span></button>
+    <button onclick="openCart()">Cart <span id="cartCount">0</span></button>
+    <button class="black-btn" onclick="adminLogin()">Admin</button>
+  </div>
+</header>
+
+<main id="store">
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">MH HUDLI Jewellery</div>
+    <h1>Jewellery that tells your story.</h1>
+    <p>Discover timeless elegance, beautiful craftsmanship and jewellery made to celebrate your most precious moments.</p>
+    <button class="gold-btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+      SHOP COLLECTION
+    </button>
+  </div>
+</section>
+
+<section id="collections">
+  <div class="section-title">
+    <div class="eyebrow">Explore our world</div>
+    <h2>Shop by Collection</h2>
+    <p>Find the perfect piece for every occasion.</p>
+  </div>
+
+  <div class="categories">
+    <a class="category" href="#shop" onclick="setCategory('Diamond Jewellery')">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80">
+      <b>Diamonds</b>
+    </a>
+    <a class="category" href="#shop" onclick="setCategory('Gold Jewellery')">
+      <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=600&q=80">
+      <b>Gold</b>
+    </a>
+    <a class="category" href="#shop" onclick="setCategory('Rings')">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80">
+      <b>Rings</b>
+    </a>
+    <a class="category" href="#shop" onclick="setCategory('Earrings')">
+      <img src="https://images.unsplash.com/photo-1635767798638-3665a7e8f8c7?auto=format&fit=crop&w=600&q=80">
+      <b>Earrings</b>
+    </a>
+    <a class="category" href="#shop" onclick="setCategory('Bridal Jewellery')">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80">
+      <b>Bridal</b>
+    </a>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="section-title">
+    <div class="eyebrow">Handpicked for you</div>
+    <h2>New Arrivals</h2>
+    <p>Discover the latest additions to our collection.</p>
+  </div>
+
+  <div class="toolbar">
+    <input id="search" placeholder="Search jewellery..." oninput="renderProducts()">
+    <select id="category" onchange="renderProducts()">
+      <option value="">All Categories</option>
+      <option>Diamond Jewellery</option>
+      <option>Gold Jewellery</option>
+      <option>Rings</option>
+      <option>Earrings</option>
+      <option>Necklaces</option>
+      <option>Pendants</option>
+      <option>Bridal Jewellery</option>
+      <option>Gemstones</option>
+    </select>
+    <select id="sort" onchange="renderProducts()">
+      <option value="">Sort by</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+    </select>
+  </div>
+
+  <div class="products" id="products"></div>
+</section>
+
+<section class="benefits">
+  <div class="benefit">
+    <h3>Premium Quality</h3>
+    <p>Beautifully selected jewellery with attention to detail.</p>
+  </div>
+  <div class="benefit">
+    <h3>Elegant Designs</h3>
+    <p>Traditional beauty with a modern touch.</p>
+  </div>
+  <div class="benefit">
+    <h3>Secure Packaging</h3>
+    <p>Carefully packed for a memorable experience.</p>
+  </div>
+  <div class="benefit">
+    <h3>Personal Assistance</h3>
+    <p>Contact us for product details and custom enquiries.</p>
+  </div>
+</section>
+
+<section id="story" class="story">
+  <div class="eyebrow">Our story</div>
+  <h2>Where Elegance Meets Tradition</h2>
+  <p>
+    MH HUDLI Jewellery celebrates the beauty of tradition and the elegance
+    of timeless design. Our goal is to help you find jewellery that makes
+    every occasion special and every memory unforgettable.
+  </p>
+</section>
+
+<section class="newsletter">
+  <div class="section-title">
+    <div class="eyebrow">Stay connected</div>
+    <h2>Join the MH HUDLI family</h2>
+    <p>Contact us for new collections, special designs and jewellery enquiries.</p>
+  </div>
+  <button class="gold-btn" onclick="contactWhatsApp('Hello MH HUDLI Jewellery, I would like to know about your latest collection.')">
+    CONTACT US ON WHATSAPP
+  </button>
+</section>
+
+</main>
+
+<section id="admin" class="admin">
+  <h2>MH HUDLI Jewellery Admin Panel</h2>
+  <div class="notice">
+    Demo admin panel only. Data is stored in this browser. This is not secure
+    production authentication and does not connect to a cloud database or payment gateway.
+  </div>
+
+  <div class="admin-nav">
+    <button onclick="adminTab('adminProducts')">Products</button>
+    <button onclick="adminTab('adminOrders')">Orders</button>
+    <button onclick="adminTab('adminSettings')">Settings</button>
+    <button onclick="exportData()">Export Data</button>
+    <button onclick="document.getElementById('importFile').click()">Import Data</button>
+    <button onclick="showStore()">Back to Website</button>
+    <input type="file" id="importFile" accept=".json" hidden onchange="importData(event)">
+  </div>
+
+  <div id="adminProducts">
+    <button class="gold-btn" onclick="editProduct()">+ Add Product</button>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Photo</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
+        <tbody id="productRows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="adminOrders" style="display:none">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th><th>Update</th></tr></thead>
+        <tbody id="orderRows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="adminSettings" style="display:none">
+    <h3>Store Settings</h3>
+    <label>Store Name</label><input id="settingName">
+    <label>WhatsApp Number</label><input id="settingPhone">
+    <label>Shipping Charge (₹)</label><input id="settingShipping" type="number">
+    <label>Announcement Bar</label><input id="settingAnnouncement">
+    <button class="gold-btn" onclick="saveSettings()">Save Settings</button>
+  </div>
+</section>
+
+<footer id="contact">
+  <h2>MH HUDLI Jewellery</h2>
+  <p>Where Elegance Meets Tradition</p>
+  <p>Kolhapur, Maharashtra, India</p>
+  <p>WhatsApp: 9309031070</p>
+  <p>For product enquiries, custom orders and assistance, contact us.</p>
+  <p>© <span id="year"></span> MH HUDLI Jewellery. All rights reserved.</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/919309031070" target="_blank">WhatsApp Us</a>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle">Cart</h2>
+      <button class="close" onclick="closeModal()">×</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const fallbackImage="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80";
+
+const defaultProducts=[
+{
+ id:"MH001",name:"Classic Diamond Ring",category:"Rings",
+ price:24999,oldPrice:29999,stock:5,
+ image:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80",
+ description:"Elegant ring design for special moments."
+},
+{
+ id:"MH002",name:"Gold Statement Necklace",category:"Gold Jewellery",
+ price:38999,oldPrice:45999,stock:4,
+ image:"https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=80",
+ description:"A timeless necklace with traditional elegance."
+},
+{
+ id:"MH003",name:"Diamond Pendant",category:"Pendants",
+ price:15999,oldPrice:18999,stock:8,
+ image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",
+ description:"A delicate pendant for everyday sophistication."
+},
+{
+ id:"MH004",name:"Bridal Earrings",category:"Bridal Jewellery",
+ price:29999,oldPrice:34999,stock:3,
+ image:"https://images.unsplash.com/photo-1635767798638-3665a7e8f8c7?auto=format&fit=crop&w=700&q=80",
+ description:"Beautiful earrings for your special day."
+}
+];
+
+let db=JSON.parse(localStorage.getItem("mh_hudli_store")||"null")||{
+ products:defaultProducts,
+ orders:[],
+ settings:{
+  name:"MH HUDLI Jewellery",
+  phone:"919309031070",
+  shipping:99,
+  announcement:"✨ WHERE ELEGANCE MEETS TRADITION ✨"
+ }
+};
+
+let cart=JSON.parse(localStorage.getItem("mh_hudli_cart")||"[]");
+let wishlist=JSON.parse(localStorage.getItem("mh_hudli_wishlist")||"[]");
+let editingId=null;
+
+function saveDB(){
+ localStorage.setItem("mh_hudli_store",JSON.stringify(db));
+}
+function saveCart(){
+ localStorage.setItem("mh_hudli_cart",JSON.stringify(cart));
+ updateCounts();
+}
+function saveWishlist(){
+ localStorage.setItem("mh_hudli_wishlist",JSON.stringify(wishlist));
+ updateCounts();
+}
+function money(n){
+ return "₹"+Number(n||0).toLocaleString("en-IN");
+}
+function safe(s){
+ return String(s??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
+function toast(message){
+ const t=document.getElementById("toast");
+ t.textContent=message;
+ t.style.display="block";
+ setTimeout(()=>t.style.display="none",2500);
+}
+function updateCounts(){
+ document.getElementById("cartCount").textContent=cart.reduce((a,c)=>a+c.qty,0);
+ document.getElementById("wishCount").textContent=wishlist.length;
+}
+function setCategory(category){
+ document.getElementById("category").value=category;
+ renderProducts();
+}
+function renderProducts(){
+ let list=[...db.products];
+ const q=document.getElementById("search").value.toLowerCase();
+ const cat=document.getElementById("category").value;
+ const sort=document.getElementById("sort").value;
+
+ list=list.filter(p=>
+  (p.name+" "+p.category).toLowerCase().includes(q)&&
+  (!cat||p.category===cat)
+ );
+ if(sort==="low")list.sort((a,b)=>a.price-b.price);
+ if(sort==="high")list.sort((a,b)=>b.price-a.price);
+
+ document.getElementById("products").innerHTML=list.map(p=>{
+  const discount=p.oldPrice>p.price?Math.round((p.oldPrice-p.price)/p.oldPrice*100):0;
+  const liked=wishlist.includes(p.id);
+  return `
+  <div class="product">
+   <div class="product-image">
+    <img src="${safe(p.image||fallbackImage)}" alt="${safe(p.name)}" onerror="this.src='${fallbackImage}'">
+    ${discount?`<span class="badge">${discount}% OFF</span>`:""}
+    <button class="heart" onclick="toggleWishlist('${safe(p.id)}')">${liked?"♥":"♡"}</button>
+   </div>
+   <div class="product-info">
+    <h3>${safe(p.name)}</h3>
+    <div class="category-name">${safe(p.category)}</div>
+    <div class="price">${money(p.price)}
+    ${p.oldPrice>p.price?`<span class="old-price">${money(p.oldPrice)}</span>`:""}
+    </div>
+    <div class="product-actions">
+     <button onclick="addCart('${safe(p.id)}')">Add to Cart</button>
+     <button class="gold-btn" onclick="buyNow('${safe(p.id)}')">Buy Now</button>
+    </div>
+   </div>
+  </div>`;
+ }).join("")||"<p>No products found.</p>";
+}
+function toggleWishlist(id){
+ if(wishlist.includes(id))wishlist=wishlist.filter(x=>x!==id);
+ else wishlist.push(id);
+ saveWishlist();
+ renderProducts();
+}
+function openWishlist(){
+ const items=wishlist.map(id=>db.products.find(p=>p.id===id)).filter(Boolean);
+ openModal("Your Wishlist",items.map(p=>`
+ <div class="row">
+  <img src="${safe(p.image)}">
+  <div><b>${safe(p.name)}</b><br>${money(p.price)}</div>
+  <button onclick="addCart('${safe(p.id)}')">Add</button>
+ </div>`).join("")||"<p>Your wishlist is empty.</p>");
+}
+function addCart(id){
+ const p=db.products.find(x=>x.id===id);
+ if(!p)return;
+ const c=cart.find(x=>x.id===id);
+ if(c)c.qty++;
+ else cart.push({id,qty:1});
+ saveCart();
+ toast("Added to cart");
+}
+function buyNow(id){
+ addCart(id);
+ openCart();
+}
+function openCart(){
+ const rows=cart.map(c=>{
+  const p=db.products.find(x=>x.id===c.id);
+  if(!p)return "";
+  return `<div class="row">
+   <img src="${safe(p.image)}">
+   <div><b>${safe(p.name)}</b><br>${money(p.price)}
+   <br><button onclick="changeQty('${p.id}',-1)">−</button>
+   ${c.qty}
+   <button onclick="changeQty('${p.id}',1)">+</button></div>
+   <b>${money(p.price*c.qty)}</b>
+  </div>`;
+ }).join("");
+
+ const subtotal=cart.reduce((a,c)=>a+(db.products.find(p=>p.id===c.id)?.price||0)*c.qty,0);
+ const shipping=subtotal?Number(db.settings.shipping||0):0;
+
+ openModal("Your Shopping Cart",`
+ ${rows||"<p>Your cart is empty.</p>"}
+ <div class="row"><b>Subtotal</b><b>${money(subtotal)}</b></div>
+ <div class="row"><span>Shipping</span><span>${money(shipping)}</span></div>
+ <div class="row"><b>Total</b><b>${money(subtotal+shipping)}</b></div>
+ ${subtotal?'<button class="gold-btn" onclick="checkout()">Proceed to Checkout</button>':""}
+ `);
+}
+function changeQty(id,n){
+ const c=cart.find(x=>x.id===id);
+ if(!c)return;
+ c.qty+=n;
+ if(c.qty<=0)cart=cart.filter(x=>x.id!==id);
+ saveCart();
+ openCart();
+}
+function openModal(title,body){
+ document.getElementById("modalTitle").textContent=title;
+ document.getElementById("modalBody").innerHTML=body;
+ document.getElementById("overlay").classList.add("show");
+}
+function closeModal(){
+ document.getElementById("overlay").classList.remove("show");
+}
+function checkout(){
+ const subtotal=cart.reduce((a,c)=>a+(db.products.find(p=>p.id===c.id)?.price||0)*c.qty,0);
+ const shipping=Number(db.settings.shipping||0);
+
+ openModal("Checkout",`
+ <form onsubmit="placeOrder(event)">
+  <label>Full Name *</label><input id="customerName" required>
+  <label>Phone Number *</label><input id="customerPhone" required>
+  <label>Email</label><input id="customerEmail" type="email">
+  <label>Delivery Address *</label><textarea id="customerAddress" required></textarea>
+  <p><b>Order Total: ${money(subtotal+shipping)}</b></p>
+  <div class="notice">Demo checkout only. No online payment is processed.</div>
+  <button class="gold-btn">Place Demo Order</button>
+ </form>`);
+}
+function placeOrder(e){
+ e.preventDefault();
+ const subtotal=cart.reduce((a,c)=>a+(db.products.find(p=>p.id===c.id)?.price||0)*c.qty,0);
+ const order={
+  id:"MHH"+Date.now(),
+  date:new Date().toISOString(),
+  customer:{
+   name:document.getElementById("customerName").value,
+   phone:document.getElementById("customerPhone").value,
+   email:document.getElementById("customerEmail").value,
+   address:document.getElementById("customerAddress").value
+  },
+  items:cart.map(c=>({...c})),
+  subtotal,
+  total:subtotal+Number(db.settings.shipping||0),
+  status:"Order Placed"
+ };
+ db.orders.unshift(order);
+ saveDB();
+ cart=[];
+ saveCart();
+ closeModal();
+ toast("Demo order created");
+ const message=`Hello MH HUDLI Jewellery. I placed demo order ${order.id}. Name: ${order.customer.name}. Total: ${money(order.total)}. Please confirm my order.`;
+ contactWhatsApp(message);
+}
+function contactWhatsApp(message){
+ window.open("https://wa.me/"+db.settings.phone+"?text="+encodeURIComponent(message),"_blank");
+}
+
+/* DEMO ADMIN */
+function adminLogin(){
+ const password=prompt("Enter demo admin code: hudli-demo");
+ if(password==="hudli-demo"){
+  document.getElementById("store").style.display="none";
+  document.querySelector("header").style.display="none";
+  document.querySelector("footer").style.display="none";
+  document.querySelector(".whatsapp").style.display="none";
+  document.getElementById("admin").classList.add("show");
+  renderAdmin();
+  window.scrollTo(0,0);
+ }else if(password!==null)toast("Incorrect demo code");
+}
+function showStore(){
+ document.getElementById("admin").classList.remove("show");
+ document.getElementById("store").style.display="";
+ document.querySelector("header").style.display="";
+ document.querySelector("footer").style.display="";
+ document.querySelector(".whatsapp").style.display="";
+ window.scrollTo(0,0);
+}
+function adminTab(id){
+ ["adminProducts","adminOrders","adminSettings"].forEach(x=>{
+  document.getElementById(x).style.display=x===id?"block":"none";
+ });
+ renderAdmin();
+}
+function renderAdmin(){
+ document.getElementById("productRows").innerHTML=db.products.map(p=>`
+ <tr>
+  <td><img width="45" src="${safe(p.image)}"></td>
+  <td>${safe(p.name)}</td>
+  <td>${safe(p.category)}</td>
+  <td>${money(p.price)}</td>
+  <td>${p.stock}</td>
+  <td>
+   <button onclick="editProduct('${p.id}')">Edit</button>
+   <button onclick="deleteProduct('${p.id}')">Delete</button>
+  </td>
+ </tr>`).join("");
+
+ document.getElementById("orderRows").innerHTML=db.orders.map(o=>`
+ <tr>
+  <td>${safe(o.id)}</td>
+  <td>${safe(o.customer.name)}<br>${safe(o.customer.phone)}</td>
+  <td>${money(o.total)}</td>
+  <td>${safe(o.status)}</td>
+  <td><select onchange="updateOrder('${o.id}',this.value)">
+   ${["Order Placed","Processing","Shipped","Delivered","Cancelled"].map(s=>`<option ${s===o.status?"selected":""}>${s}</option>`).join("")}
+  </select></td>
+ </tr>`).join("")||"<tr><td colspan='5'>No orders yet.</td></tr>";
+
+ document.getElementById("settingName").value=db.settings.name;
+ document.getElementById("settingPhone").value=db.settings.phone;
+ document.getElementById("settingShipping").value=db.settings.shipping;
+ document.getElementById("settingAnnouncement").value=db.settings.announcement;
+}
+function editProduct(id){
+ const p=id?db.products.find(x=>x.id===id):{
+  id:"MH"+Date.now(),name:"",category:"Diamond Jewellery",
+  price:0,oldPrice:0,stock:0,image:"",description:""
+ };
+ editingId=id||null;
+
+ openModal(id?"Edit Product":"Add Product",`
+ <form onsubmit="saveProduct(event)">
+  <label>Product Name</label><input id="pName" value="${safe(p.name)}" required>
+  <label>Product ID</label><input id="pId" value="${safe(p.id)}" required>
+  <label>Category</label>
+  <select id="pCategory">
+   ${["Diamond Jewellery","Gold Jewellery","Rings","Earrings","Necklaces","Pendants","Bridal Jewellery","Gemstones"].map(c=>`<option ${c===p.category?"selected":""}>${c}</option>`).join("")}
+  </select>
+  <label>Selling Price (₹)</label><input id="pPrice" type="number" min="0" value="${p.price}" required>
+  <label>Original Price (₹)</label><input id="pOldPrice" type="number" min="0" value="${p.oldPrice||0}">
+  <label>Stock Quantity</label><input id="pStock" type="number" min="0" value="${p.stock||0}">
+  <label>Product Image URL</label><input id="pImage" value="${safe(p.image)}">
+  <label>Upload Image</label><input type="file" accept="image/*" onchange="uploadProductImage(event)">
+  <label>Description</label><textarea id="pDescription">${safe(p.description||"")}</textarea>
+  <button class="gold-btn">Save Product</button>
+ </form>`);
+}
+function uploadProductImage(e){
+ const file=e.target.files[0];
+ if(!file)return;
+ if(file.size>1000000){toast("Please use an image under 1 MB");return}
+ const reader=new FileReader();
+ reader.onload=()=>document.getElementById("pImage").value=reader.result;
+ reader.readAsDataURL(file);
+}
+function saveProduct(e){
+ e.preventDefault();
+ const p={
+  id:document.getElementById("pId").value.trim(),
+  name:document.getElementById("pName").value.trim(),
+  category:document.getElementById("pCategory").value,
+  price:Number(document.getElementById("pPrice").value),
+  oldPrice:Number(document.getElementById("pOldPrice").value||0),
+  stock:Number(document.getElementById("pStock").value||0),
+  image:document.getElementById("pImage").value||fallbackImage,
+  description:document.getElementById("pDescription").value
+ };
+ if(db.products.some(x=>x.id===p.id&&x.id!==editingId)){
+  toast("Product ID already exists");return;
+ }
+ if(editingId)db.products=db.products.map(x=>x.id===editingId?p:x);
+ else db.products.unshift(p);
+ saveDB();closeModal();renderProducts();renderAdmin();toast("Product saved");
+}
+function deleteProduct(id){
+ if(confirm("Delete this product?")){
+  db.products=db.products.filter(p=>p.id!==id);
+  cart=cart.filter(c=>c.id!==id);
+  wishlist=wishlist.filter(x=>x!==id);
+  saveDB();saveCart();saveWishlist();renderProducts();renderAdmin();
+  toast("Product deleted");
+ }
+}
+function updateOrder(id,status){
+ const o=db.orders.find(x=>x.id===id);
+ if(o){o.status=status;saveDB();toast("Order status updated")}
+}
+function saveSettings(){
+ db.settings={
+  name:document.getElementById("settingName").value,
+  phone:document.getElementById("settingPhone").value.replace(/\D/g,""),
+  shipping:Number(document.getElementById("settingShipping").value||0),
+  announcement:document.getElementById("settingAnnouncement").value
+ };
+ saveDB();
+ document.getElementById("announcement").textContent=db.settings.announcement;
+ toast("Settings saved");
+}
+function exportData(){
+ const blob=new Blob([JSON.stringify(db,null,2)],{type:"application/json"});
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download="mh-hudli-store-data.json";
+ a.click();
+}
+function importData(e){
+ const file=e.target.files[0];
+ if(!file)return;
+ const reader=new FileReader();
+ reader.onload=()=>{
+  try{
+   const data=JSON.parse(reader.result);
+   if(!Array.isArray(data.products)||!Array.isArray(data.orders))throw 0;
+   db=data;saveDB();renderProducts();renderAdmin();toast("Data imported");
+  }catch{toast("Invalid JSON data file")}
+ };
+ reader.readAsText(file);
+}
+
+document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("announcement").textContent=db.settings.announcement;
+renderProducts();
+updateCounts();
+</script>
+</body>
+</html>
