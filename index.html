@@ -3,749 +3,1006 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MH HUDLI Jewellery | Luxury Jewellery</title>
+<meta name="theme-color" content="#101010">
+<title>AMIT HUDLI | Fine Jewellery</title>
 
 <style>
 :root{
-  --black:#111;
-  --gold:#c7a45d;
-  --lightgold:#ead8a6;
-  --cream:#f8f5ef;
+  --black:#101010;
+  --gold:#c9a45c;
+  --light-gold:#ead7a5;
+  --cream:#faf8f3;
   --white:#fff;
-  --gray:#777;
+  --grey:#777;
+  --border:#e8e3d9;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;color:#222;background:#fff}
-button,input,select,textarea{font:inherit}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--cream);
+  color:var(--black);
+}
+
+button,input,select,textarea{
+  font:inherit;
+}
+
 button{cursor:pointer}
+
 a{text-decoration:none;color:inherit}
-img{max-width:100%}
 
 .announcement{
-  background:#111;color:#e8d5a4;text-align:center;
-  padding:10px;font-size:11px;letter-spacing:1.5px
+  background:var(--black);
+  color:var(--light-gold);
+  text-align:center;
+  padding:10px;
+  font-size:11px;
+  letter-spacing:2px;
 }
+
 header{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:15px;padding:17px 5%;background:#fff;
-  border-bottom:1px solid #eee;position:sticky;top:0;z-index:20
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:50;
 }
-.logo{font: bold 23px Georgia,serif;letter-spacing:3px}
-.logo span{display:block;font:9px Arial;letter-spacing:5px;color:#9c7b3e;margin-top:5px}
-nav{display:flex;gap:20px;font-size:12px;text-transform:uppercase}
-nav a:hover{color:#a4823d}
-.header-actions{display:flex;gap:8px}
-button{border:1px solid var(--gold);background:white;padding:10px 13px}
-.gold-btn{background:var(--gold);color:#111;border:1px solid var(--gold)}
-.black-btn{background:#111;color:white;border-color:#111}
-.icon-btn{border:0;font-size:18px;padding:8px}
+
+.header-inner{
+  max-width:1400px;
+  margin:auto;
+  padding:18px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-family:Georgia,serif;
+  font-size:27px;
+  letter-spacing:4px;
+  font-weight:normal;
+}
+
+.logo small{
+  display:block;
+  font-family:Arial,sans-serif;
+  font-size:9px;
+  letter-spacing:5px;
+  margin-top:5px;
+  text-align:center;
+  color:#9c7b3e;
+}
+
+nav{
+  display:flex;
+  gap:25px;
+  align-items:center;
+  font-size:12px;
+  letter-spacing:1px;
+}
+
+nav a:hover{color:#a17b34}
+
+.header-actions{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+
+.icon-btn{
+  background:none;
+  border:0;
+  font-size:20px;
+  position:relative;
+}
+
+.count{
+  background:var(--gold);
+  color:#111;
+  font-size:10px;
+  border-radius:50%;
+  min-width:16px;
+  height:16px;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  position:absolute;
+  top:-7px;
+  right:-9px;
+}
+
+.mobile-menu{display:none}
 
 .hero{
-  min-height:490px;display:flex;align-items:center;padding:7%;
-  color:white;background:
-  linear-gradient(90deg,#070707e8,#07070755),
-  url('https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1600&q=85') center/cover
+  min-height:500px;
+  background:#171717;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 20px;
+  position:relative;
+  overflow:hidden;
 }
-.hero-content{max-width:580px}
-.eyebrow{font-size:11px;letter-spacing:4px;color:#e8d5a4;text-transform:uppercase}
-.hero h1{font:clamp(42px,6vw,72px)/1.08 Georgia,serif;font-weight:normal;margin:20px 0}
-.hero p{line-height:1.8;color:#ddd;max-width:480px}
-.hero button{margin-top:18px;padding:14px 23px}
 
-section{padding:55px 5%}
-.section-title{text-align:center;margin-bottom:30px}
-.section-title h2{font:36px Georgia,serif;font-weight:normal;margin:12px 0}
-.section-title p{font-size:14px;color:#777}
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center,#3b3020 0%,#171717 65%);
+}
 
-.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.hero-content{
+  position:relative;
+  max-width:700px;
+}
+
+.eyebrow{
+  color:var(--light-gold);
+  font-size:11px;
+  letter-spacing:4px;
+  margin-bottom:22px;
+}
+
+.hero h1{
+  font-family:Georgia,serif;
+  font-size:clamp(38px,7vw,75px);
+  font-weight:normal;
+  letter-spacing:3px;
+  line-height:1.1;
+}
+
+.hero p{
+  color:#ddd;
+  margin:25px auto;
+  line-height:1.8;
+  font-size:14px;
+  max-width:480px;
+}
+
+.btn{
+  display:inline-block;
+  border:1px solid var(--gold);
+  padding:14px 28px;
+  background:var(--gold);
+  color:#111;
+  letter-spacing:1px;
+  font-size:11px;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+
+.btn:hover{background:var(--light-gold)}
+
+.btn-outline{
+  background:transparent;
+  color:var(--gold);
+}
+
+.section{
+  max-width:1400px;
+  margin:auto;
+  padding:65px 5%;
+}
+
+.section-heading{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.section-heading small{
+  color:#a17b34;
+  letter-spacing:3px;
+  font-size:10px;
+}
+
+.section-heading h2{
+  font-family:Georgia,serif;
+  font-weight:normal;
+  font-size:34px;
+  margin:12px 0;
+}
+
+.section-heading p{
+  font-size:13px;
+  color:var(--grey);
+}
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
 .category{
-  height:175px;position:relative;display:flex;align-items:end;
-  padding:18px;color:white;overflow:hidden;background:#222
+  border:1px solid var(--border);
+  padding:30px 15px;
+  text-align:center;
+  background:white;
+  transition:.2s;
 }
-.category img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.65;transition:.4s}
-.category:hover img{transform:scale(1.08)}
-.category b{position:relative;font:23px Georgia,serif}
 
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}
-.toolbar input,.toolbar select{padding:12px;border:1px solid #ddd;background:white}
-.toolbar input{flex:1;min-width:170px}
+.category:hover{
+  border-color:var(--gold);
+  transform:translateY(-3px);
+}
 
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.product{border:1px solid #eee;background:white;position:relative}
-.product-image{position:relative;background:#f7f4ef}
-.product-image img{width:100%;height:250px;object-fit:cover;display:block}
+.category h3{
+  font-family:Georgia,serif;
+  font-size:20px;
+  font-weight:normal;
+}
+
+.category span{
+  display:block;
+  color:#9c7b3e;
+  font-size:10px;
+  margin-top:10px;
+  letter-spacing:2px;
+}
+
+.shop-area{
+  background:white;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.shop-tools{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+  align-items:center;
+}
+
+.shop-tools input,
+.shop-tools select{
+  border:1px solid var(--border);
+  padding:12px;
+  background:white;
+  min-width:150px;
+  flex:1;
+}
+
+.shop-tools input{min-width:220px}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:20px;
+}
+
+.product-card{
+  border:1px solid var(--border);
+  background:white;
+  position:relative;
+}
+
+.product-image{
+  width:100%;
+  aspect-ratio:1/1;
+  background:#f4f1eb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  position:relative;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.image-empty{
+  text-align:center;
+  color:#b5a88e;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.image-empty b{
+  display:block;
+  font-family:Georgia,serif;
+  font-size:35px;
+  margin-bottom:10px;
+  font-weight:normal;
+}
+
 .heart{
-  position:absolute;right:10px;top:10px;background:#fff;border:0;
-  border-radius:50%;width:35px;height:35px;font-size:19px
+  position:absolute;
+  top:12px;
+  right:12px;
+  border:0;
+  background:white;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  font-size:19px;
 }
-.badge{position:absolute;left:10px;top:10px;background:#111;color:#fff;padding:6px 8px;font-size:10px}
-.product-info{padding:14px}
-.product h3{font:18px Georgia,serif;margin:0 0 8px}
-.product .category-name{font-size:11px;color:#888}
-.price{font-weight:bold;margin-top:10px}
-.old-price{font-size:12px;color:#999;text-decoration:line-through;margin-left:7px}
-.product-actions{display:flex;gap:7px;margin-top:13px}
-.product-actions button{flex:1;padding:10px 5px;font-size:11px}
 
-.benefits{background:#f8f5ef;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
-.benefit h3{font:20px Georgia,serif}
-.benefit p{font-size:12px;color:#777;line-height:1.7}
+.product-info{padding:16px}
 
-.story{background:#111;color:white;text-align:center}
-.story p{max-width:720px;margin:20px auto;color:#ccc;line-height:1.9}
-.story h2{font:38px Georgia,serif;font-weight:normal}
+.product-info small{
+  color:#a17b34;
+  letter-spacing:1px;
+  font-size:9px;
+  text-transform:uppercase;
+}
 
-.newsletter{background:#f8f5ef;text-align:center}
-.newsletter input{max-width:350px;padding:13px;border:1px solid #ddd}
-footer{background:#080808;color:#ccc;padding:40px 5%;font-size:13px;line-height:1.9}
-footer h2{font:25px Georgia,serif;color:#e5cc8e}
-footer a{color:#e5cc8e}
+.product-info h3{
+  font-family:Georgia,serif;
+  font-size:18px;
+  font-weight:normal;
+  margin:8px 0;
+}
+
+.price{
+  font-size:14px;
+  margin:10px 0;
+}
+
+.product-buttons{
+  display:flex;
+  gap:8px;
+  margin-top:14px;
+}
+
+.product-buttons button{
+  flex:1;
+  padding:11px 5px;
+  font-size:10px;
+  letter-spacing:1px;
+  border:1px solid var(--black);
+  background:var(--black);
+  color:white;
+}
+
+.product-buttons button.secondary{
+  background:white;
+  color:var(--black);
+}
+
+.empty-state{
+  grid-column:1/-1;
+  padding:70px 20px;
+  text-align:center;
+  border:1px dashed #d8cbb1;
+  color:#777;
+}
+
+.empty-state h3{
+  font-family:Georgia,serif;
+  font-size:27px;
+  font-weight:normal;
+  color:#222;
+  margin-bottom:12px;
+}
+
+.empty-state p{
+  font-size:13px;
+  line-height:1.8;
+}
+
+.empty-state button{margin-top:20px}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  text-align:center;
+}
+
+.feature{
+  padding:25px;
+  border:1px solid var(--border);
+}
+
+.feature h3{
+  font-family:Georgia,serif;
+  font-weight:normal;
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.feature p{
+  color:var(--grey);
+  font-size:12px;
+  line-height:1.7;
+}
+
+footer{
+  background:var(--black);
+  color:white;
+  padding:55px 5% 25px;
+}
+
+.footer-inner{
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:35px;
+}
+
+footer h3{
+  font-family:Georgia,serif;
+  font-weight:normal;
+  font-size:25px;
+  letter-spacing:3px;
+  margin-bottom:15px;
+}
+
+footer p,footer a{
+  font-size:12px;
+  color:#bbb;
+  line-height:2;
+}
+
+footer a{display:block}
+
+.footer-bottom{
+  border-top:1px solid #333;
+  margin-top:35px;
+  padding-top:20px;
+  text-align:center;
+  color:#888;
+  font-size:11px;
+}
 
 .whatsapp{
-  position:fixed;right:16px;bottom:16px;background:#16834b;color:white;
-  border-radius:30px;padding:14px 18px;z-index:30
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#168c51;
+  color:white;
+  border-radius:40px;
+  padding:14px 18px;
+  font-size:12px;
+  z-index:60;
+  box-shadow:0 5px 20px #0002;
 }
 
 .overlay{
-  display:none;position:fixed;inset:0;background:#0009;z-index:50;
-  align-items:center;justify-content:center;padding:15px
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:100;
 }
-.overlay.show{display:flex}
-.modal{background:white;padding:22px;width:min(700px,100%);max-height:90vh;overflow:auto}
-.modal-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee}
-.modal-header h2{font:28px Georgia,serif}
-.close{border:0;font-size:25px}
-.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #eee}
-.row img{width:55px;height:55px;object-fit:cover}
-.modal label{display:block;font-size:12px;color:#555;margin-top:10px}
-.modal input,.modal textarea,.modal select{width:100%;padding:12px;border:1px solid #ddd;margin:5px 0}
-.notice{background:#fff4d5;padding:12px;font-size:12px;line-height:1.6;margin:12px 0}
-.toast{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:#111;color:white;padding:12px 18px;display:none;z-index:80}
 
-.admin{display:none;background:#fafafa;padding:25px 5%}
-.admin.show{display:block}
-.admin-nav{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
-.admin-nav button{background:#222;color:white}
-.table-wrap{overflow:auto}
-table{width:100%;border-collapse:collapse;font-size:13px}
-td,th{padding:10px;border-bottom:1px solid #ddd;text-align:left}
-th{background:#f1e8d6}
+.overlay.show{display:block}
+
+.drawer{
+  position:absolute;
+  right:0;
+  top:0;
+  height:100%;
+  width:min(440px,100%);
+  background:white;
+  padding:25px;
+  overflow:auto;
+}
+
+.drawer-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+  padding-bottom:20px;
+  margin-bottom:20px;
+}
+
+.drawer-header h2{
+  font-family:Georgia,serif;
+  font-weight:normal;
+}
+
+.close{
+  border:0;
+  background:none;
+  font-size:25px;
+}
+
+.cart-item{
+  display:flex;
+  gap:12px;
+  padding:15px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.cart-item img{
+  width:65px;
+  height:65px;
+  object-fit:cover;
+  background:#eee;
+}
+
+.cart-item h4{
+  font-family:Georgia,serif;
+  font-weight:normal;
+  margin-bottom:8px;
+}
+
+.cart-item button{
+  border:0;
+  background:none;
+  color:#a17b34;
+  font-size:12px;
+}
+
+.cart-total{
+  display:flex;
+  justify-content:space-between;
+  margin:25px 0;
+  font-weight:bold;
+}
+
+.full{width:100%;text-align:center}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:150;
+  background:#0009;
+  padding:15px;
+  overflow:auto;
+}
+
+.modal.show{
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+}
+
+.modal-box{
+  width:min(700px,100%);
+  background:white;
+  padding:25px;
+  margin:auto;
+}
+
+.modal-box h2{
+  font-family:Georgia,serif;
+  font-weight:normal;
+  margin-bottom:20px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.form-group{margin-bottom:14px}
+
+.form-group label{
+  display:block;
+  font-size:11px;
+  margin-bottom:7px;
+  color:#666;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  border:1px solid var(--border);
+  padding:12px;
+  background:white;
+}
+
+.form-group textarea{min-height:80px}
+
+.admin-bar{
+  background:#f4eee2;
+  padding:15px;
+  margin-bottom:20px;
+  font-size:12px;
+  line-height:1.7;
+}
+
+.admin-list-item{
+  border:1px solid var(--border);
+  padding:12px;
+  margin:10px 0;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  font-size:13px;
+}
+
+.admin-list-item button{
+  border:1px solid #ddd;
+  background:white;
+  padding:7px 10px;
+  margin-left:5px;
+}
+
+.toast{
+  position:fixed;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#111;
+  color:white;
+  padding:13px 20px;
+  font-size:12px;
+  z-index:300;
+  display:none;
+}
+
+.toast.show{display:block}
 
 @media(max-width:900px){
-  nav{display:none}
-  .products{grid-template-columns:repeat(2,1fr)}
-  .categories{grid-template-columns:repeat(3,1fr)}
-  .benefits{grid-template-columns:repeat(2,1fr)}
+  .product-grid{grid-template-columns:repeat(3,1fr)}
+  nav{gap:12px}
 }
-@media(max-width:550px){
-  header{padding:12px 3%}
-  .logo{font-size:17px}
-  .hero{min-height:410px}
-  .products{gap:10px}
-  .product-image img{height:180px}
-  .product-actions{flex-direction:column}
+
+@media(max-width:650px){
+  .header-inner{padding:14px 4%}
+  .logo{font-size:20px;letter-spacing:2px}
+  .logo small{font-size:7px;letter-spacing:3px}
+  nav{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:white;
+    padding:20px;
+    flex-direction:column;
+    border-bottom:1px solid var(--border);
+  }
+  nav.open{display:flex}
+  .mobile-menu{display:block}
+  .header-actions{gap:10px}
+  .hero{min-height:420px}
   .categories{grid-template-columns:repeat(2,1fr)}
-  .category{height:140px}
-  section{padding:40px 4%}
-  .section-title h2{font-size:30px}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .product-info{padding:12px}
+  .product-info h3{font-size:16px}
+  .product-buttons button{font-size:9px}
+  .section{padding:45px 4%}
+  .section-heading h2{font-size:28px}
+  .features{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .whatsapp{right:12px;bottom:12px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="announcement" id="announcement">
-  ✨ WHERE ELEGANCE MEETS TRADITION ✨
+<div class="announcement">
+  AMIT HUDLI · WHERE LUXURY MEETS ELEGANCE
 </div>
 
 <header>
-  <a href="#" class="logo">MH HUDLI<span>JEWELLERY</span></a>
+  <div class="header-inner">
 
-  <nav>
-    <a href="#collections">Collections</a>
-    <a href="#shop">Shop</a>
-    <a href="#story">Our Story</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <button class="icon-btn mobile-menu" onclick="toggleMenu()">☰</button>
 
-  <div class="header-actions">
-    <button class="icon-btn" onclick="openWishlist()">♡ <span id="wishCount">0</span></button>
-    <button onclick="openCart()">Cart <span id="cartCount">0</span></button>
-    <button class="black-btn" onclick="adminLogin()">Admin</button>
+    <a href="#" class="logo" id="headerLogo">
+      AMIT HUDLI
+      <small>FINE JEWELLERY</small>
+    </a>
+
+    <nav id="navigation">
+      <a href="#home">HOME</a>
+      <a href="#categories">COLLECTIONS</a>
+      <a href="#shop">SHOP ALL</a>
+      <a href="#about">OUR STORY</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" onclick="openWishlist()" aria-label="Wishlist">
+        ♡ <span class="count" id="wishCount">0</span>
+      </button>
+      <button class="icon-btn" onclick="openCart()" aria-label="Cart">
+        ♧ <span class="count" id="cartCount">0</span>
+      </button>
+    </div>
+
   </div>
 </header>
 
-<main id="store">
-
-<section class="hero">
+<section class="hero" id="home">
   <div class="hero-content">
-    <div class="eyebrow">MH HUDLI Jewellery</div>
-    <h1>Jewellery that tells your story.</h1>
-    <p>Discover timeless elegance, beautiful craftsmanship and jewellery made to celebrate your most precious moments.</p>
-    <button class="gold-btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
-      SHOP COLLECTION
-    </button>
+    <div class="eyebrow">THE AMIT HUDLI COLLECTION</div>
+    <h1>Elegance<br>In Every Detail</h1>
+    <p>
+      Discover jewellery designed to celebrate your individuality,
+      your moments and your timeless sense of style.
+    </p>
+    <a href="#shop" class="btn">Explore Collection</a>
   </div>
 </section>
 
-<section id="collections">
-  <div class="section-title">
-    <div class="eyebrow">Explore our world</div>
-    <h2>Shop by Collection</h2>
-    <p>Find the perfect piece for every occasion.</p>
+<section class="section" id="categories">
+  <div class="section-heading">
+    <small>EXPLORE OUR WORLD</small>
+    <h2>Shop By Category</h2>
+    <p>Find the piece that speaks to you.</p>
   </div>
 
   <div class="categories">
-    <a class="category" href="#shop" onclick="setCategory('Diamond Jewellery')">
-      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80">
-      <b>Diamonds</b>
-    </a>
-    <a class="category" href="#shop" onclick="setCategory('Gold Jewellery')">
-      <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=600&q=80">
-      <b>Gold</b>
-    </a>
     <a class="category" href="#shop" onclick="setCategory('Rings')">
-      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80">
-      <b>Rings</b>
+      <h3>Rings</h3><span>EXPLORE</span>
+    </a>
+    <a class="category" href="#shop" onclick="setCategory('Necklaces')">
+      <h3>Necklaces</h3><span>EXPLORE</span>
     </a>
     <a class="category" href="#shop" onclick="setCategory('Earrings')">
-      <img src="https://images.unsplash.com/photo-1635767798638-3665a7e8f8c7?auto=format&fit=crop&w=600&q=80">
-      <b>Earrings</b>
+      <h3>Earrings</h3><span>EXPLORE</span>
     </a>
-    <a class="category" href="#shop" onclick="setCategory('Bridal Jewellery')">
-      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80">
-      <b>Bridal</b>
+    <a class="category" href="#shop" onclick="setCategory('Bracelets')">
+      <h3>Bracelets</h3><span>EXPLORE</span>
     </a>
   </div>
 </section>
 
-<section id="shop">
-  <div class="section-title">
-    <div class="eyebrow">Handpicked for you</div>
-    <h2>New Arrivals</h2>
-    <p>Discover the latest additions to our collection.</p>
-  </div>
+<section class="shop-area" id="shop">
+  <div class="section">
 
-  <div class="toolbar">
-    <input id="search" placeholder="Search jewellery..." oninput="renderProducts()">
-    <select id="category" onchange="renderProducts()">
-      <option value="">All Categories</option>
-      <option>Diamond Jewellery</option>
-      <option>Gold Jewellery</option>
-      <option>Rings</option>
-      <option>Earrings</option>
-      <option>Necklaces</option>
-      <option>Pendants</option>
-      <option>Bridal Jewellery</option>
-      <option>Gemstones</option>
-    </select>
-    <select id="sort" onchange="renderProducts()">
-      <option value="">Sort by</option>
-      <option value="low">Price: Low to High</option>
-      <option value="high">Price: High to Low</option>
-    </select>
-  </div>
+    <div class="section-heading">
+      <small>THE COLLECTION</small>
+      <h2>All Jewellery</h2>
+      <p>Discover your next favourite piece.</p>
+    </div>
 
-  <div class="products" id="products"></div>
-</section>
+    <div class="shop-tools">
+      <input id="searchInput" type="search"
+        placeholder="Search jewellery..."
+        oninput="renderProducts()">
 
-<section class="benefits">
-  <div class="benefit">
-    <h3>Premium Quality</h3>
-    <p>Beautifully selected jewellery with attention to detail.</p>
-  </div>
-  <div class="benefit">
-    <h3>Elegant Designs</h3>
-    <p>Traditional beauty with a modern touch.</p>
-  </div>
-  <div class="benefit">
-    <h3>Secure Packaging</h3>
-    <p>Carefully packed for a memorable experience.</p>
-  </div>
-  <div class="benefit">
-    <h3>Personal Assistance</h3>
-    <p>Contact us for product details and custom enquiries.</p>
+      <select id="categoryFilter" onchange="renderProducts()">
+        <option value="All">All Categories</option>
+        <option>Rings</option>
+        <option>Necklaces</option>
+        <option>Earrings</option>
+        <option>Bracelets</option>
+        <option>Pendants</option>
+        <option>Kadas</option>
+        <option>Other</option>
+      </select>
+
+      <select id="sortFilter" onchange="renderProducts()">
+        <option value="featured">Featured</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="name">Name: A to Z</option>
+      </select>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+
   </div>
 </section>
 
-<section id="story" class="story">
-  <div class="eyebrow">Our story</div>
-  <h2>Where Elegance Meets Tradition</h2>
-  <p>
-    MH HUDLI Jewellery celebrates the beauty of tradition and the elegance
-    of timeless design. Our goal is to help you find jewellery that makes
-    every occasion special and every memory unforgettable.
-  </p>
+<section class="section" id="about">
+  <div class="section-heading">
+    <small>OUR PHILOSOPHY</small>
+    <h2>Made For Your Moments</h2>
+    <p>
+      Jewellery is more than an accessory.
+      It is a memory, a feeling and a reflection of you.
+    </p>
+  </div>
+
+  <div class="features">
+    <div class="feature">
+      <h3>Timeless Design</h3>
+      <p>Thoughtfully selected pieces for everyday elegance and special occasions.</p>
+    </div>
+    <div class="feature">
+      <h3>Personal Service</h3>
+      <p>Connect with our team for product details and assistance with your order.</p>
+    </div>
+    <div class="feature">
+      <h3>Beautiful Moments</h3>
+      <p>Celebrate life's memorable moments with jewellery that feels special.</p>
+    </div>
+  </div>
 </section>
 
-<section class="newsletter">
-  <div class="section-title">
-    <div class="eyebrow">Stay connected</div>
-    <h2>Join the MH HUDLI family</h2>
-    <p>Contact us for new collections, special designs and jewellery enquiries.</p>
-  </div>
-  <button class="gold-btn" onclick="contactWhatsApp('Hello MH HUDLI Jewellery, I would like to know about your latest collection.')">
-    CONTACT US ON WHATSAPP
-  </button>
-</section>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h3 id="footerBrand">AMIT HUDLI</h3>
+      <p>Where luxury meets elegance.</p>
+      <p>Jewellery for every beautiful moment.</p>
+    </div>
 
-</main>
+    <div>
+      <h3>Explore</h3>
+      <a href="#shop">Shop All</a>
+      <a href="#categories">Collections</a>
+      <a href="#about">Our Story</a>
+      <a href="#" onclick="openAdmin()">Admin Panel</a>
+    </div>
 
-<section id="admin" class="admin">
-  <h2>MH HUDLI Jewellery Admin Panel</h2>
-  <div class="notice">
-    Demo admin panel only. Data is stored in this browser. This is not secure
-    production authentication and does not connect to a cloud database or payment gateway.
-  </div>
-
-  <div class="admin-nav">
-    <button onclick="adminTab('adminProducts')">Products</button>
-    <button onclick="adminTab('adminOrders')">Orders</button>
-    <button onclick="adminTab('adminSettings')">Settings</button>
-    <button onclick="exportData()">Export Data</button>
-    <button onclick="document.getElementById('importFile').click()">Import Data</button>
-    <button onclick="showStore()">Back to Website</button>
-    <input type="file" id="importFile" accept=".json" hidden onchange="importData(event)">
-  </div>
-
-  <div id="adminProducts">
-    <button class="gold-btn" onclick="editProduct()">+ Add Product</button>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Photo</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
-        <tbody id="productRows"></tbody>
-      </table>
+    <div>
+      <h3>Contact</h3>
+      <p>Customer Support</p>
+      <a id="footerPhone" href="tel:9309031070">9309031070</a>
+      <a id="footerWhatsApp" href="https://wa.me/919309031070" target="_blank">
+        WhatsApp Us
+      </a>
     </div>
   </div>
 
-  <div id="adminOrders" style="display:none">
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th><th>Update</th></tr></thead>
-        <tbody id="orderRows"></tbody>
-      </table>
-    </div>
+  <div class="footer-bottom">
+    © <span id="year"></span> AMIT HUDLI. All rights reserved.
   </div>
-
-  <div id="adminSettings" style="display:none">
-    <h3>Store Settings</h3>
-    <label>Store Name</label><input id="settingName">
-    <label>WhatsApp Number</label><input id="settingPhone">
-    <label>Shipping Charge (₹)</label><input id="settingShipping" type="number">
-    <label>Announcement Bar</label><input id="settingAnnouncement">
-    <button class="gold-btn" onclick="saveSettings()">Save Settings</button>
-  </div>
-</section>
-
-<footer id="contact">
-  <h2>MH HUDLI Jewellery</h2>
-  <p>Where Elegance Meets Tradition</p>
-  <p>Kolhapur, Maharashtra, India</p>
-  <p>WhatsApp: 9309031070</p>
-  <p>For product enquiries, custom orders and assistance, contact us.</p>
-  <p>© <span id="year"></span> MH HUDLI Jewellery. All rights reserved.</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/919309031070" target="_blank">WhatsApp Us</a>
+<a class="whatsapp" id="whatsappFloat"
+   href="https://wa.me/919309031070"
+   target="_blank">WhatsApp Us</a>
 
-<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <div class="modal-header">
-      <h2 id="modalTitle">Cart</h2>
-      <button class="close" onclick="closeModal()">×</button>
+<!-- CART DRAWER -->
+<div class="overlay" id="cartOverlay" onclick="closeCart(event)">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <h2>Your Shopping Bag</h2>
+      <button class="close" onclick="closeCart()">×</button>
     </div>
-    <div id="modalBody"></div>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-total">
+      <span>Subtotal</span>
+      <span id="cartTotal">₹0</span>
+    </div>
+
+    <button class="btn full" onclick="checkout()">Order on WhatsApp</button>
+  </div>
+</div>
+
+<!-- WISHLIST DRAWER -->
+<div class="overlay" id="wishOverlay" onclick="closeWishlist(event)">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <h2>Saved Pieces</h2>
+      <button class="close" onclick="closeWishlist()">×</button>
+    </div>
+    <div id="wishItems"></div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="modal" id="adminLogin">
+  <div class="modal-box">
+    <button class="close" style="float:right" onclick="closeModal('adminLogin')">×</button>
+    <h2>Admin Access</h2>
+
+    <div class="admin-bar">
+      This is a browser-based demo admin panel.
+      For a live website, use secure server-side authentication.
+    </div>
+
+    <div class="form-group">
+      <label>Admin PIN</label>
+      <input id="adminPin" type="password" placeholder="Enter admin PIN">
+    </div>
+
+    <button class="btn" onclick="loginAdmin()">Enter Admin</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="modal" id="adminModal">
+  <div class="modal-box">
+    <button class="close" style="float:right" onclick="closeModal('adminModal')">×</button>
+    <h2>AMIT HUDLI Admin</h2>
+
+    <div class="admin-bar">
+      Add your jewellery products, upload images, update prices and manage orders.
+      Product data is saved in this browser.
+    </div>
+
+    <div class="form-group">
+      <label>Brand Display Name</label>
+      <select id="brandSelect" onchange="changeBrand()">
+        <option value="AMIT HUDLI">AMIT HUDLI</option>
+        <option value="AMIT HUDLI JEWELS">AMIT HUDLI JEWELS</option>
+        <option value="AMIT HUDLI LUX">AMIT HUDLI LUX</option>
+        <option value="AMIT HUDLI BRAND">AMIT HUDLI BRAND</option>
+      </select>
+    </div>
+
+    <button class="btn" onclick="openProductForm()">+ Add Product</button>
+    <button class="btn btn-outline" onclick="exportData()">Export Backup</button>
+
+    <h3 style="margin-top:25px;font-family:Georgia,serif;font-weight:normal">
+      Products
+    </h3>
+    <div id="adminProducts"></div>
+
+    <h3 style="margin-top:25px;font-family:Georgia,serif;font-weight:normal">
+      Orders
+    </h3>
+    <div id="adminOrders"></div>
+
+    <div style="margin-top:25px">
+      <button class="btn btn-outline" onclick="logoutAdmin()">Log Out</button>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT FORM -->
+<div class="modal" id="productModal">
+  <div class="modal-box">
+    <button class="close" style="float:right" onclick="closeModal('productModal')">×</button>
+    <h2 id="productFormTitle">Add Product</h2>
+
+    <input type="hidden" id="editProductId">
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Product Name</label>
+        <input id="pName" placeholder="Product name">
+      </div>
+
+      <div class="form-group">
+        <label>Price (₹)</label>
+        <input id="pPrice" type="number" min="0" placeholder="Price">
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <select id="pCategory">
+          <option>Rings</option>
+          <option>Necklaces</option>
+          <option>Earrings</option>
+          <option>Bracelets</option>
+          <option>Pendants</option>
+          <option>Kadas</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Material / Finish</label>
+        <input id="pMaterial" placeholder="Gold, silver, diamond...">
+      </div>
+
+      <div class="form-group">
+        <label>Stock Quantity</label>
+        <input id="pStock" type="number" min="0" value="10">
+      </div>
+
+      <div class="form-group">
+        <label>Product Image</label>
+        <input id="pImage" type="file" accept="image/*">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Or paste image URL</label>
+      <input id="pImageUrl" placeholder="https://example.com/image.jpg">
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea id="pDescription" placeholder="Product details"></textarea>
+    </div>
+
+    <button class="btn" onclick="saveProduct()">Save Product</button>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-const fallbackImage="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80";
-
-const defaultProducts=[
-{
- id:"MH001",name:"Classic Diamond Ring",category:"Rings",
- price:24999,oldPrice:29999,stock:5,
- image:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80",
- description:"Elegant ring design for special moments."
-},
-{
- id:"MH002",name:"Gold Statement Necklace",category:"Gold Jewellery",
- price:38999,oldPrice:45999,stock:4,
- image:"https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=80",
- description:"A timeless necklace with traditional elegance."
-},
-{
- id:"MH003",name:"Diamond Pendant",category:"Pendants",
- price:15999,oldPrice:18999,stock:8,
- image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",
- description:"A delicate pendant for everyday sophistication."
-},
-{
- id:"MH004",name:"Bridal Earrings",category:"Bridal Jewellery",
- price:29999,oldPrice:34999,stock:3,
- image:"https://images.unsplash.com/photo-1635767798638-3665a7e8f8c7?auto=format&fit=crop&w=700&q=80",
- description:"Beautiful earrings for your special day."
-}
-];
-
-let db=JSON.parse(localStorage.getItem("mh_hudli_store")||"null")||{
- products:defaultProducts,
- orders:[],
- settings:{
-  name:"MH HUDLI Jewellery",
-  phone:"919309031070",
-  shipping:99,
-  announcement:"✨ WHERE ELEGANCE MEETS TRADITION ✨"
- }
-};
-
-let cart=JSON.parse(localStorage.getItem("mh_hudli_cart")||"[]");
-let wishlist=JSON.parse(localStorage.getItem("mh_hudli_wishlist")||"[]");
-let editingId=null;
-
-function saveDB(){
- localStorage.setItem("mh_hudli_store",JSON.stringify(db));
-}
-function saveCart(){
- localStorage.setItem("mh_hudli_cart",JSON.stringify(cart));
- updateCounts();
-}
-function saveWishlist(){
- localStorage.setItem("mh_hudli_wishlist",JSON.stringify(wishlist));
- updateCounts();
-}
-function money(n){
- return "₹"+Number(n||0).toLocaleString("en-IN");
-}
-function safe(s){
- return String(s??"").replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[c]));
-}
-function toast(message){
- const t=document.getElementById("toast");
- t.textContent=message;
- t.style.display="block";
- setTimeout(()=>t.style.display="none",2500);
-}
-function updateCounts(){
- document.getElementById("cartCount").textContent=cart.reduce((a,c)=>a+c.qty,0);
- document.getElementById("wishCount").textContent=wishlist.length;
-}
-function setCategory(category){
- document.getElementById("category").value=category;
- renderProducts();
-}
-function renderProducts(){
- let list=[...db.products];
- const q=document.getElementById("search").value.toLowerCase();
- const cat=document.getElementById("category").value;
- const sort=document.getElementById("sort").value;
-
- list=list.filter(p=>
-  (p.name+" "+p.category).toLowerCase().includes(q)&&
-  (!cat||p.category===cat)
- );
- if(sort==="low")list.sort((a,b)=>a.price-b.price);
- if(sort==="high")list.sort((a,b)=>b.price-a.price);
-
- document.getElementById("products").innerHTML=list.map(p=>{
-  const discount=p.oldPrice>p.price?Math.round((p.oldPrice-p.price)/p.oldPrice*100):0;
-  const liked=wishlist.includes(p.id);
-  return `
-  <div class="product">
-   <div class="product-image">
-    <img src="${safe(p.image||fallbackImage)}" alt="${safe(p.name)}" onerror="this.src='${fallbackImage}'">
-    ${discount?`<span class="badge">${discount}% OFF</span>`:""}
-    <button class="heart" onclick="toggleWishlist('${safe(p.id)}')">${liked?"♥":"♡"}</button>
-   </div>
-   <div class="product-info">
-    <h3>${safe(p.name)}</h3>
-    <div class="category-name">${safe(p.category)}</div>
-    <div class="price">${money(p.price)}
-    ${p.oldPrice>p.price?`<span class="old-price">${money(p.oldPrice)}</span>`:""}
-    </div>
-    <div class="product-actions">
-     <button onclick="addCart('${safe(p.id)}')">Add to Cart</button>
-     <button class="gold-btn" onclick="buyNow('${safe(p.id)}')">Buy Now</button>
-    </div>
-   </div>
-  </div>`;
- }).join("")||"<p>No products found.</p>";
-}
-function toggleWishlist(id){
- if(wishlist.includes(id))wishlist=wishlist.filter(x=>x!==id);
- else wishlist.push(id);
- saveWishlist();
- renderProducts();
-}
-function openWishlist(){
- const items=wishlist.map(id=>db.products.find(p=>p.id===id)).filter(Boolean);
- openModal("Your Wishlist",items.map(p=>`
- <div class="row">
-  <img src="${safe(p.image)}">
-  <div><b>${safe(p.name)}</b><br>${money(p.price)}</div>
-  <button onclick="addCart('${safe(p.id)}')">Add</button>
- </div>`).join("")||"<p>Your wishlist is empty.</p>");
-}
-function addCart(id){
- const p=db.products.find(x=>x.id===id);
- if(!p)return;
- const c=cart.find(x=>x.id===id);
- if(c)c.qty++;
- else cart.push({id,qty:1});
- saveCart();
- toast("Added to cart");
-}
-function buyNow(id){
- addCart(id);
- openCart();
-}
-function openCart(){
- const rows=cart.map(c=>{
-  const p=db.products.find(x=>x.id===c.id);
-  if(!p)return "";
-  return `<div class="row">
-   <img src="${safe(p.image)}">
-   <div><b>${safe(p.name)}</b><br>${money(p.price)}
-   <br><button onclick="changeQty('${p.id}',-1)">−</button>
-   ${c.qty}
-   <button onclick="changeQty('${p.id}',1)">+</button></div>
-   <b>${money(p.price*c.qty)}</b>
-  </div>`;
- }).join("");
-
- const subtotal=cart.reduce((a,c)=>a+(db.products.find(p=>p.id===c.id)?.price||0)*c.qty,0);
- const shipping=subtotal?Number(db.settings.shipping||0):0;
-
- openModal("Your Shopping Cart",`
- ${rows||"<p>Your cart is empty.</p>"}
- <div class="row"><b>Subtotal</b><b>${money(subtotal)}</b></div>
- <div class="row"><span>Shipping</span><span>${money(shipping)}</span></div>
- <div class="row"><b>Total</b><b>${money(subtotal+shipping)}</b></div>
- ${subtotal?'<button class="gold-btn" onclick="checkout()">Proceed to Checkout</button>':""}
- `);
-}
-function changeQty(id,n){
- const c=cart.find(x=>x.id===id);
- if(!c)return;
- c.qty+=n;
- if(c.qty<=0)cart=cart.filter(x=>x.id!==id);
- saveCart();
- openCart();
-}
-function openModal(title,body){
- document.getElementById("modalTitle").textContent=title;
- document.getElementById("modalBody").innerHTML=body;
- document.getElementById("overlay").classList.add("show");
-}
-function closeModal(){
- document.getElementById("overlay").classList.remove("show");
-}
-function checkout(){
- const subtotal=cart.reduce((a,c)=>a+(db.products.find(p=>p.id===c.id)?.price||0)*c.qty,0);
- const shipping=Number(db.settings.shipping||0);
-
- openModal("Checkout",`
- <form onsubmit="placeOrder(event)">
-  <label>Full Name *</label><input id="customerName" required>
-  <label>Phone Number *</label><input id="customerPhone" required>
-  <label>Email</label><input id="customerEmail" type="email">
-  <label>Delivery Address *</label><textarea id="customerAddress" required></textarea>
-  <p><b>Order Total: ${money(subtotal+shipping)}</b></p>
-  <div class="notice">Demo checkout only. No online payment is processed.</div>
-  <button class="gold-btn">Place Demo Order</button>
- </form>`);
-}
-function placeOrder(e){
- e.preventDefault();
- const subtotal=cart.reduce((a,c)=>a+(db.products.find(p=>p.id===c.id)?.price||0)*c.qty,0);
- const order={
-  id:"MHH"+Date.now(),
-  date:new Date().toISOString(),
-  customer:{
-   name:document.getElementById("customerName").value,
-   phone:document.getElementById("customerPhone").value,
-   email:document.getElementById("customerEmail").value,
-   address:document.getElementById("customerAddress").value
-  },
-  items:cart.map(c=>({...c})),
-  subtotal,
-  total:subtotal+Number(db.settings.shipping||0),
-  status:"Order Placed"
- };
- db.orders.unshift(order);
- saveDB();
- cart=[];
- saveCart();
- closeModal();
- toast("Demo order created");
- const message=`Hello MH HUDLI Jewellery. I placed demo order ${order.id}. Name: ${order.customer.name}. Total: ${money(order.total)}. Please confirm my order.`;
- contactWhatsApp(message);
-}
-function contactWhatsApp(message){
- window.open("https://wa.me/"+db.settings.phone+"?text="+encodeURIComponent(message),"_blank");
-}
-
-/* DEMO ADMIN */
-function adminLogin(){
- const password=prompt("Enter demo admin code: hudli-demo");
- if(password==="hudli-demo"){
-  document.getElementById("store").style.display="none";
-  document.querySelector("header").style.display="none";
-  document.querySelector("footer").style.display="none";
-  document.querySelector(".whatsapp").style.display="none";
-  document.getElementById("admin").classList.add("show");
-  renderAdmin();
-  window.scrollTo(0,0);
- }else if(password!==null)toast("Incorrect demo code");
-}
-function showStore(){
- document.getElementById("admin").classList.remove("show");
- document.getElementById("store").style.display="";
- document.querySelector("header").style.display="";
- document.querySelector("footer").style.display="";
- document.querySelector(".whatsapp").style.display="";
- window.scrollTo(0,0);
-}
-function adminTab(id){
- ["adminProducts","adminOrders","adminSettings"].forEach(x=>{
-  document.getElementById(x).style.display=x===id?"block":"none";
- });
- renderAdmin();
-}
-function renderAdmin(){
- document.getElementById("productRows").innerHTML=db.products.map(p=>`
- <tr>
-  <td><img width="45" src="${safe(p.image)}"></td>
-  <td>${safe(p.name)}</td>
-  <td>${safe(p.category)}</td>
-  <td>${money(p.price)}</td>
-  <td>${p.stock}</td>
-  <td>
-   <button onclick="editProduct('${p.id}')">Edit</button>
-   <button onclick="deleteProduct('${p.id}')">Delete</button>
-  </td>
- </tr>`).join("");
-
- document.getElementById("orderRows").innerHTML=db.orders.map(o=>`
- <tr>
-  <td>${safe(o.id)}</td>
-  <td>${safe(o.customer.name)}<br>${safe(o.customer.phone)}</td>
-  <td>${money(o.total)}</td>
-  <td>${safe(o.status)}</td>
-  <td><select onchange="updateOrder('${o.id}',this.value)">
-   ${["Order Placed","Processing","Shipped","Delivered","Cancelled"].map(s=>`<option ${s===o.status?"selected":""}>${s}</option>`).join("")}
-  </select></td>
- </tr>`).join("")||"<tr><td colspan='5'>No orders yet.</td></tr>";
-
- document.getElementById("settingName").value=db.settings.name;
- document.getElementById("settingPhone").value=db.settings.phone;
- document.getElementById("settingShipping").value=db.settings.shipping;
- document.getElementById("settingAnnouncement").value=db.settings.announcement;
-}
-function editProduct(id){
- const p=id?db.products.find(x=>x.id===id):{
-  id:"MH"+Date.now(),name:"",category:"Diamond Jewellery",
-  price:0,oldPrice:0,stock:0,image:"",description:""
- };
- editingId=id||null;
-
- openModal(id?"Edit Product":"Add Product",`
- <form onsubmit="saveProduct(event)">
-  <label>Product Name</label><input id="pName" value="${safe(p.name)}" required>
-  <label>Product ID</label><input id="pId" value="${safe(p.id)}" required>
-  <label>Category</label>
-  <select id="pCategory">
-   ${["Diamond Jewellery","Gold Jewellery","Rings","Earrings","Necklaces","Pendants","Bridal Jewellery","Gemstones"].map(c=>`<option ${c===p.category?"selected":""}>${c}</option>`).join("")}
-  </select>
-  <label>Selling Price (₹)</label><input id="pPrice" type="number" min="0" value="${p.price}" required>
-  <label>Original Price (₹)</label><input id="pOldPrice" type="number" min="0" value="${p.oldPrice||0}">
-  <label>Stock Quantity</label><input id="pStock" type="number" min="0" value="${p.stock||0}">
-  <label>Product Image URL</label><input id="pImage" value="${safe(p.image)}">
-  <label>Upload Image</label><input type="file" accept="image/*" onchange="uploadProductImage(event)">
-  <label>Description</label><textarea id="pDescription">${safe(p.description||"")}</textarea>
-  <button class="gold-btn">Save Product</button>
- </form>`);
-}
-function uploadProductImage(e){
- const file=e.target.files[0];
- if(!file)return;
- if(file.size>1000000){toast("Please use an image under 1 MB");return}
- const reader=new FileReader();
- reader.onload=()=>document.getElementById("pImage").value=reader.result;
- reader.readAsDataURL(file);
-}
-function saveProduct(e){
- e.preventDefault();
- const p={
-  id:document.getElementById("pId").value.trim(),
-  name:document.getElementById("pName").value.trim(),
-  category:document.getElementById("pCategory").value,
-  price:Number(document.getElementById("pPrice").value),
-  oldPrice:Number(document.getElementById("pOldPrice").value||0),
-  stock:Number(document.getElementById("pStock").value||0),
-  image:document.getElementById("pImage").value||fallbackImage,
-  description:document.getElementById("pDescription").value
- };
- if(db.products.some(x=>x.id===p.id&&x.id!==editingId)){
-  toast("Product ID already exists");return;
- }
- if(editingId)db.products=db.products.map(x=>x.id===editingId?p:x);
- else db.products.unshift(p);
- saveDB();closeModal();renderProducts();renderAdmin();toast("Product saved");
-}
-function deleteProduct(id){
- if(confirm("Delete this product?")){
-  db.products=db.products.filter(p=>p.id!==id);
-  cart=cart.filter(c=>c.id!==id);
-  wishlist=wishlist.filter(x=>x!==id);
-  saveDB();saveCart();saveWishlist();renderProducts();renderAdmin();
-  toast("Product deleted");
- }
-}
-function updateOrder(id,status){
- const o=db.orders.find(x=>x.id===id);
- if(o){o.status=status;saveDB();toast("Order status updated")}
-}
-function saveSettings(){
- db.settings={
-  name:document.getElementById("settingName").value,
-  phone:document.getElementById("settingPhone").value.replace(/\D/g,""),
-  shipping:Number(document.getElementById("settingShipping").value||0),
-  announcement:document.getElementById("settingAnnouncement").value
- };
- saveDB();
- document.getElementById("announcement").textContent=db.settings.announcement;
- toast("Settings saved");
-}
-function exportData(){
- const blob=new Blob([JSON.stringify(db,null,2)],{type:"application/json"});
- const a=document.createElement("a");
- a.href=URL.createObjectURL(blob);
- a.download="mh-hudli-store-data.json";
- a.click();
-}
-function importData(e){
- const file=e.target.files[0];
- if(!file)return;
- const reader=new FileReader();
- reader.onload=()=>{
-  try{
-   const data=JSON.parse(reader.result);
-   if(!Array.isArray(data.products)||!Array.isArray(data.orders))throw 0;
-   db=data;saveDB();renderProducts();renderAdmin();toast("Data imported");
-  }catch{toast("Invalid JSON data file")}
- };
- reader.readAsText(file);
-}
-
-document.getElementById("year").textContent=new Date().getFullYear();
-document.getElementById("announcement").textContent=db.settings.announcement;
-renderProducts();
-updateCounts();
-</script>
-</body>
-</html>
+/* =============
