@@ -1,0 +1,436 @@
+<!-- MH HUDLI ADMIN PANEL
+     Add this code before </body> in your existing website.
+     Change the admin password before publishing.
+     Frontend-only demo: use a secure backend for production.
+-->
+
+<style>
+#mh-admin-btn{
+  position:fixed;bottom:20px;right:20px;z-index:999;
+  background:#d8b56d;color:#111;border:0;padding:14px 20px;
+  font-weight:bold;cursor:pointer;border-radius:3px;
+}
+#mh-admin{
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:#101010;color:#f7f0e3;overflow:auto;
+  font-family:Arial,sans-serif;padding:20px;
+}
+#mh-admin.active{display:block}
+.mha-container{max-width:1000px;margin:auto}
+.mha-header{display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid #665333;padding-bottom:15px}
+.mha-title{color:#d8b56d;letter-spacing:2px}
+.mha-close{background:none;color:#fff;border:1px solid #d8b56d;
+  padding:10px 15px;cursor:pointer}
+.mha-tabs{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}
+.mha-tab{padding:12px 18px;background:#222;color:#d8b56d;
+  border:1px solid #665333;cursor:pointer}
+.mha-tab.active{background:#d8b56d;color:#111}
+.mha-section{display:none}
+.mha-section.active{display:block}
+.mha-card{background:#1b1b1b;border:1px solid #393126;
+  padding:18px;margin:15px 0}
+.mha-card h3{color:#d8b56d;font-weight:normal}
+.mha-field{margin:12px 0}
+.mha-field label{display:block;color:#bbb;font-size:12px;margin-bottom:6px}
+.mha-field input,.mha-field textarea{
+  width:100%;padding:12px;background:#111;color:#fff;
+  border:1px solid #51432c;box-sizing:border-box
+}
+.mha-btn{background:#d8b56d;color:#111;border:0;padding:12px 18px;
+  cursor:pointer;margin:5px 5px 5px 0;font-weight:bold}
+.mha-btn.secondary{background:#333;color:#d8b56d}
+.mha-status{font-size:12px;color:#d8b56d;margin-top:8px}
+.mha-order{border:1px solid #51432c;padding:15px;margin:12px 0;
+  background:#1b1b1b}
+.mha-order.paid{border-color:#4d9b65}
+.mha-order h3{color:#d8b56d;font-weight:normal}
+.mha-order small{color:#bbb;line-height:1.8}
+.mha-empty{color:#aaa;padding:20px;text-align:center}
+@media(max-width:600px){
+  #mh-admin{padding:12px}
+  .mha-card{padding:12px}
+}
+</style>
+
+<button id="mh-admin-btn" onclick="mhaOpen()">ADMIN</button>
+
+<div id="mh-admin">
+  <div class="mha-container">
+
+    <div class="mha-header">
+      <h2 class="mha-title">MH HUDLI ADMIN</h2>
+      <button class="mha-close" onclick="mhaClose()">CLOSE ✕</button>
+    </div>
+
+    <div class="mha-tabs">
+      <button class="mha-tab active" onclick="mhaTab('products',this)">
+        PRODUCTS
+      </button>
+      <button class="mha-tab" onclick="mhaTab('payments',this)">
+        PAYMENTS & ORDERS
+      </button>
+    </div>
+
+    <!-- PRODUCT MANAGEMENT -->
+    <div id="mha-products" class="mha-section active">
+      <h2>Manage Jewellery Products</h2>
+      <div id="mha-product-list"></div>
+    </div>
+
+    <!-- PAYMENT MANAGEMENT -->
+    <div id="mha-payments" class="mha-section">
+      <h2>Customer Orders & Payments</h2>
+      <p style="color:#aaa;font-size:13px">
+        Confirm payment only after checking your bank or UPI app.
+      </p>
+      <div id="mha-order-list"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* CHANGE THIS PASSWORD BEFORE PUBLISHING */
+const MH_ADMIN_PASSWORD = "CHANGE_THIS_PASSWORD";
+
+/* Admin access */
+function mhaOpen(){
+  const password = prompt("Enter MH HUDLI admin password:");
+
+  if(password !== MH_ADMIN_PASSWORD){
+    alert("Incorrect password.");
+    return;
+  }
+
+  document.getElementById("mh-admin").classList.add("active");
+  mhaLoadProducts();
+  mhaLoadOrders();
+}
+
+function mhaClose(){
+  document.getElementById("mh-admin").classList.remove("active");
+}
+
+function mhaTab(name,button){
+  document.querySelectorAll(".mha-section").forEach(section=>{
+    section.classList.remove("active");
+  });
+
+  document.querySelectorAll(".mha-tab").forEach(tab=>{
+    tab.classList.remove("active");
+  });
+
+  document.getElementById("mha-"+name).classList.add("active");
+  button.classList.add("active");
+
+  if(name==="products") mhaLoadProducts();
+  if(name==="payments") mhaLoadOrders();
+}
+
+/* PRODUCT MANAGEMENT */
+
+function mhaSaveProducts(){
+  localStorage.setItem(
+    "mh_hudli_products",
+    JSON.stringify(products)
+  );
+}
+
+function mhaLoadProducts(){
+  const saved = localStorage.getItem("mh_hudli_products");
+
+  if(saved){
+    try{
+      const savedProducts = JSON.parse(saved);
+
+      savedProducts.forEach(savedProduct=>{
+        const original = products.find(
+          p=>p.id===savedProduct.id
+        );
+
+        if(original){
+          original.price = savedProduct.price;
+          original.old = savedProduct.old;
+          original.image = savedProduct.image || "";
+          original.name = savedProduct.name;
+        }
+      });
+    }catch(error){
+      console.error("Product data error",error);
+    }
+  }
+
+  const container = document.getElementById("mha-product-list");
+  container.innerHTML = "";
+
+  products.forEach(product=>{
+    const card = document.createElement("div");
+    card.className = "mha-card";
+
+    card.innerHTML = `
+      <h3>${product.name}</h3>
+
+      <div class="mha-field">
+        <label>Product Name</label>
+        <input id="mha-name-${product.id}"
+          value="${mhaEscape(product.name)}">
+      </div>
+
+      <div class="mha-field">
+        <label>Selling Price (₹)</label>
+        <input type="number" min="0"
+          id="mha-price-${product.id}"
+          value="${product.price}">
+      </div>
+
+      <div class="mha-field">
+        <label>Original Price (₹)</label>
+        <input type="number" min="0"
+          id="mha-old-${product.id}"
+          value="${product.old}">
+      </div>
+
+      <div class="mha-field">
+        <label>Product Photo URL</label>
+        <input type="url"
+          id="mha-image-${product.id}"
+          value="${mhaEscape(product.image || "")}"
+          placeholder="https://your-image-link.jpg">
+      </div>
+
+      <button class="mha-btn"
+        onclick="mhaSaveProduct(${product.id})">
+        SAVE PRODUCT
+      </button>
+
+      <div class="mha-status" id="mha-status-${product.id}"></div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function mhaSaveProduct(id){
+  const product = products.find(p=>p.id===id);
+  if(!product)return;
+
+  const name = document.getElementById("mha-name-"+id).value.trim();
+  const price = Number(document.getElementById("mha-price-"+id).value);
+  const old = Number(document.getElementById("mha-old-"+id).value);
+  const image = document.getElementById("mha-image-"+id).value.trim();
+
+  if(!name || price<0 || old<0 || !Number.isFinite(price)){
+    alert("Please enter valid product details.");
+    return;
+  }
+
+  product.name = name;
+  product.price = price;
+  product.old = old;
+  product.image = image;
+
+  mhaSaveProducts();
+
+  /* Refresh the storefront product display */
+  if(typeof renderProducts==="function"){
+    renderProducts();
+  }
+
+  document.getElementById("mha-status-"+id).textContent =
+    "Product saved successfully.";
+}
+
+/* PAYMENT AND ORDER MANAGEMENT */
+
+/*
+  Orders must be saved during checkout.
+  This listener records checkout details from the existing website.
+*/
+
+document.getElementById("checkoutForm").addEventListener(
+  "submit",
+  function(event){
+
+    if(!cart || cart.length===0)return;
+
+    const order = {
+      id:"MH"+Date.now(),
+      date:new Date().toLocaleString("en-IN"),
+      name:document.getElementById("customerName").value,
+      phone:document.getElementById("customerPhone").value,
+      address:document.getElementById("customerAddress").value,
+      method:document.getElementById("paymentMethod").value,
+      items:cart.map(item=>({
+        name:item.name,
+        price:item.price,
+        qty:item.qty
+      })),
+      total:cart.reduce(
+        (sum,item)=>sum+item.price*item.qty,0
+      ),
+      paymentStatus:"Pending",
+      orderStatus:"New"
+    };
+
+    const orders = JSON.parse(
+      localStorage.getItem("mh_hudli_orders") || "[]"
+    );
+
+    orders.unshift(order);
+
+    localStorage.setItem(
+      "mh_hudli_orders",
+      JSON.stringify(orders)
+    );
+  },
+  true
+);
+
+/* Display saved orders */
+
+function mhaLoadOrders(){
+  const orders = JSON.parse(
+    localStorage.getItem("mh_hudli_orders") || "[]"
+  );
+
+  const container = document.getElementById("mha-order-list");
+  container.innerHTML = "";
+
+  if(!orders.length){
+    container.innerHTML =
+      '<div class="mha-empty">No orders have been recorded yet.</div>';
+    return;
+  }
+
+  orders.forEach(order=>{
+    const card = document.createElement("div");
+    card.className =
+      "mha-order "+(order.paymentStatus==="Paid"?"paid":"");
+
+    const items = (order.items || []).map(item=>
+      `${mhaEscape(item.name)} × ${item.qty} — ₹${item.price*item.qty}`
+    ).join("<br>");
+
+    card.innerHTML = `
+      <h3>Order ${mhaEscape(order.id)}</h3>
+
+      <small>
+        Date: ${mhaEscape(order.date)}<br>
+        Customer: ${mhaEscape(order.name)}<br>
+        Mobile: ${mhaEscape(order.phone)}<br>
+        Address: ${mhaEscape(order.address)}<br>
+        Payment method: ${mhaEscape(order.method)}<br>
+        Items:<br>${items}<br><br>
+        Total: ₹${order.total}<br>
+        Payment status: <strong>${mhaEscape(order.paymentStatus)}</strong><br>
+        Order status: ${mhaEscape(order.orderStatus)}
+      </small>
+
+      <br><br>
+
+      <button class="mha-btn"
+        onclick="mhaConfirmPayment('${order.id}')">
+        CONFIRM PAYMENT
+      </button>
+
+      <button class="mha-btn secondary"
+        onclick="mhaUpdateOrder('${order.id}')">
+        UPDATE ORDER STATUS
+      </button>
+
+      <button class="mha-btn secondary"
+        onclick="mhaDeleteOrder('${order.id}')">
+        DELETE ORDER
+      </button>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+/* Manually confirm after checking payment received */
+
+function mhaConfirmPayment(id){
+  const confirmed = confirm(
+    "Have you verified that this payment was received in your bank or UPI account?"
+  );
+
+  if(!confirmed)return;
+
+  const orders = JSON.parse(
+    localStorage.getItem("mh_hudli_orders") || "[]"
+  );
+
+  const order = orders.find(o=>o.id===id);
+  if(!order)return;
+
+  order.paymentStatus = "Paid";
+  order.orderStatus = "Confirmed";
+  order.confirmedAt = new Date().toLocaleString("en-IN");
+
+  localStorage.setItem(
+    "mh_hudli_orders",
+    JSON.stringify(orders)
+  );
+
+  mhaLoadOrders();
+}
+
+/* Update order status */
+
+function mhaUpdateOrder(id){
+  const status = prompt(
+    "Enter order status:\nConfirmed\nProcessing\nShipped\nDelivered\nCancelled"
+  );
+
+  if(!status)return;
+
+  const orders = JSON.parse(
+    localStorage.getItem("mh_hudli_orders") || "[]"
+  );
+
+  const order = orders.find(o=>o.id===id);
+  if(!order)return;
+
+  order.orderStatus = status;
+
+  localStorage.setItem(
+    "mh_hudli_orders",
+    JSON.stringify(orders)
+  );
+
+  mhaLoadOrders();
+}
+
+/* Delete order */
+
+function mhaDeleteOrder(id){
+  if(!confirm("Delete this order from this browser?"))return;
+
+  const orders = JSON.parse(
+    localStorage.getItem("mh_hudli_orders") || "[]"
+  );
+
+  const updated = orders.filter(o=>o.id!==id);
+
+  localStorage.setItem(
+    "mh_hudli_orders",
+    JSON.stringify(updated)
+  );
+
+  mhaLoadOrders();
+}
+
+/* Safe text helper */
+
+function mhaEscape(value){
+  return String(value ?? "").replace(/[&<>"']/g,char=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[char]));
+}
+</script>
