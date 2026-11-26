@@ -1,436 +1,313 @@
-<!-- MH HUDLI ADMIN PANEL
-     Add this code before </body> in your existing website.
-     Change the admin password before publishing.
-     Frontend-only demo: use a secure backend for production.
--->
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MH HUDLI Jewellery | Where Elegance Meets Tradition</title>
 <style>
-#mh-admin-btn{
-  position:fixed;bottom:20px;right:20px;z-index:999;
-  background:#d8b56d;color:#111;border:0;padding:14px 20px;
-  font-weight:bold;cursor:pointer;border-radius:3px;
-}
-#mh-admin{
-  display:none;position:fixed;inset:0;z-index:1000;
-  background:#101010;color:#f7f0e3;overflow:auto;
-  font-family:Arial,sans-serif;padding:20px;
-}
-#mh-admin.active{display:block}
-.mha-container{max-width:1000px;margin:auto}
-.mha-header{display:flex;justify-content:space-between;align-items:center;
-  border-bottom:1px solid #665333;padding-bottom:15px}
-.mha-title{color:#d8b56d;letter-spacing:2px}
-.mha-close{background:none;color:#fff;border:1px solid #d8b56d;
-  padding:10px 15px;cursor:pointer}
-.mha-tabs{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}
-.mha-tab{padding:12px 18px;background:#222;color:#d8b56d;
-  border:1px solid #665333;cursor:pointer}
-.mha-tab.active{background:#d8b56d;color:#111}
-.mha-section{display:none}
-.mha-section.active{display:block}
-.mha-card{background:#1b1b1b;border:1px solid #393126;
-  padding:18px;margin:15px 0}
-.mha-card h3{color:#d8b56d;font-weight:normal}
-.mha-field{margin:12px 0}
-.mha-field label{display:block;color:#bbb;font-size:12px;margin-bottom:6px}
-.mha-field input,.mha-field textarea{
-  width:100%;padding:12px;background:#111;color:#fff;
-  border:1px solid #51432c;box-sizing:border-box
-}
-.mha-btn{background:#d8b56d;color:#111;border:0;padding:12px 18px;
-  cursor:pointer;margin:5px 5px 5px 0;font-weight:bold}
-.mha-btn.secondary{background:#333;color:#d8b56d}
-.mha-status{font-size:12px;color:#d8b56d;margin-top:8px}
-.mha-order{border:1px solid #51432c;padding:15px;margin:12px 0;
-  background:#1b1b1b}
-.mha-order.paid{border-color:#4d9b65}
-.mha-order h3{color:#d8b56d;font-weight:normal}
-.mha-order small{color:#bbb;line-height:1.8}
-.mha-empty{color:#aaa;padding:20px;text-align:center}
-@media(max-width:600px){
-  #mh-admin{padding:12px}
-  .mha-card{padding:12px}
-}
+:root{--black:#111;--gold:#c9a45c;--cream:#f7f3eb}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#222;background:#fff}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.top{background:#111;color:#e8d5a4;text-align:center;padding:10px;font-size:11px;letter-spacing:2px}
+header{position:sticky;top:0;background:#fff;z-index:10;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;gap:15px}
+.logo{font: bold 22px Georgia,serif;letter-spacing:3px}
+.logo small{display:block;font:9px Arial;letter-spacing:4px;color:#9c7b3e;margin-top:5px}
+nav{display:flex;gap:20px;font-size:12px;text-transform:uppercase}
+button,.btn{border:1px solid var(--gold);background:transparent;padding:11px 15px}
+.gold{background:var(--gold);color:#111}
+.dark{background:#111;color:#fff;border-color:#111}
+.hero{min-height:480px;background:linear-gradient(90deg,#080808e8,#08080860),url('https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1600&q=85') center/cover;color:white;display:flex;align-items:center;padding:7%}
+.hero div{max-width:550px}
+.eyebrow{font-size:11px;letter-spacing:4px;color:#ead7a4;text-transform:uppercase}
+h1{font:clamp(42px,6vw,70px)/1.1 Georgia,serif;font-weight:normal}
+.hero p{line-height:1.8;color:#ddd}
+section{padding:55px 5%}
+.heading{text-align:center;margin-bottom:28px}
+.heading h2{font:36px Georgia,serif;font-weight:normal;margin:12px 0}
+.heading p{color:#777;font-size:14px}
+.categories,.products{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.category{height:160px;position:relative;display:flex;align-items:end;padding:18px;color:white;background:#222;overflow:hidden}
+.category img{position:absolute;width:100%;height:100%;inset:0;object-fit:cover;opacity:.65}
+.category b{position:relative;font:24px Georgia,serif}
+.toolbar{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin:22px 0}
+.toolbar input,.toolbar select{padding:12px;border:1px solid #ddd}
+.product{border:1px solid #eee}
+.product img{width:100%;height:240px;object-fit:cover;background:#f4f1eb}
+.product-info{padding:13px}
+.product h3{font:18px Georgia,serif;margin:0 0 8px}
+.product p{font-size:12px;color:#777}
+.price{font-weight:bold}
+.product .actions{display:flex;gap:6px;margin-top:12px}
+.product .actions button{flex:1;padding:9px 5px;font-size:11px}
+.about{background:#111;color:white;line-height:1.8}
+.about p{color:#ccc;max-width:700px;margin:auto;text-align:center}
+footer{background:#080808;color:#ccc;padding:35px 5%;line-height:1.9;font-size:13px}
+footer h2{font:24px Georgia,serif;color:#e5cc8e}
+.wa{position:fixed;right:15px;bottom:15px;background:#16834b;color:white;border-radius:30px;padding:14px 18px;z-index:20}
+.overlay{display:none;position:fixed;inset:0;background:#0009;z-index:30;align-items:center;justify-content:center;padding:15px}
+.overlay.show{display:flex}
+.modal{background:white;padding:22px;width:min(700px,100%);max-height:90vh;overflow:auto}
+.modalhead{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;margin-bottom:15px}
+.modalhead h2{font:27px Georgia,serif}
+.close{border:0;font-size:25px}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid #eee;padding:12px 0}
+.row img{width:55px;height:55px;object-fit:cover}
+input,textarea,select{padding:11px;border:1px solid #ddd;width:100%;margin:5px 0}
+label{font-size:12px;color:#555}
+.admin{display:none;padding:25px 5%;background:#fafafa}
+.admin.show{display:block}
+.adminnav{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.adminnav button{background:#222;color:white}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{padding:10px;border-bottom:1px solid #ddd;text-align:left}
+th{background:#f1e8d6}
+.tablewrap{overflow:auto}
+.notice{background:#fff4d5;padding:12px;font-size:12px;line-height:1.6;margin:12px 0}
+.toast{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:#111;color:white;padding:12px 18px;display:none;z-index:50}
+@media(max-width:850px){nav{display:none}.products{grid-template-columns:repeat(2,1fr)}.categories{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){header{padding:12px 4%}.logo{font-size:17px}.hero{min-height:400px}.product img{height:180px}.product .actions{flex-direction:column}.heading h2{font-size:30px}section{padding:40px 4%}}
 </style>
+</head>
+<body>
+<div class="top" id="announcement">A CELEBRATION OF ELEGANCE · MH HUDLI JEWELLERY</div>
 
-<button id="mh-admin-btn" onclick="mhaOpen()">ADMIN</button>
-
-<div id="mh-admin">
-  <div class="mha-container">
-
-    <div class="mha-header">
-      <h2 class="mha-title">MH HUDLI ADMIN</h2>
-      <button class="mha-close" onclick="mhaClose()">CLOSE ✕</button>
-    </div>
-
-    <div class="mha-tabs">
-      <button class="mha-tab active" onclick="mhaTab('products',this)">
-        PRODUCTS
-      </button>
-      <button class="mha-tab" onclick="mhaTab('payments',this)">
-        PAYMENTS & ORDERS
-      </button>
-    </div>
-
-    <!-- PRODUCT MANAGEMENT -->
-    <div id="mha-products" class="mha-section active">
-      <h2>Manage Jewellery Products</h2>
-      <div id="mha-product-list"></div>
-    </div>
-
-    <!-- PAYMENT MANAGEMENT -->
-    <div id="mha-payments" class="mha-section">
-      <h2>Customer Orders & Payments</h2>
-      <p style="color:#aaa;font-size:13px">
-        Confirm payment only after checking your bank or UPI app.
-      </p>
-      <div id="mha-order-list"></div>
-    </div>
-
-  </div>
+<header>
+<a href="#" class="logo" onclick="showStore()">MH HUDLI<small>JEWELLERY</small></a>
+<nav>
+<a href="#collections">Collections</a>
+<a href="#shop">Shop</a>
+<a href="#about">Our Story</a>
+<a href="#contact">Contact</a>
+</nav>
+<div>
+<button onclick="openCart()">Cart <span id="cartCount">0</span></button>
+<button class="dark" onclick="loginAdmin()">Admin</button>
 </div>
+</header>
+
+<main id="store">
+<section class="hero">
+<div>
+<div class="eyebrow">Where Elegance Meets Tradition</div>
+<h1>A timeless sparkle.<br>A lasting legacy.</h1>
+<p>Discover jewellery that celebrates your most meaningful moments, crafted to be treasured today and for generations to come.</p>
+<button class="gold" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">EXPLORE COLLECTION</button>
+</div>
+</section>
+
+<section id="collections">
+<div class="heading">
+<div class="eyebrow">Curated for you</div>
+<h2>Shop by Collection</h2>
+<p>Find a piece that feels unmistakably yours.</p>
+</div>
+<div class="categories">
+<a class="category" href="#shop" onclick="filterCategory('Diamond Jewellery')"><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80"><b>Diamonds</b></a>
+<a class="category" href="#shop" onclick="filterCategory('Gold Jewellery')"><img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=600&q=80"><b>Gold</b></a>
+<a class="category" href="#shop" onclick="filterCategory('Rings')"><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80"><b>Rings</b></a>
+<a class="category" href="#shop" onclick="filterCategory('Bridal Jewellery')"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80"><b>Bridal</b></a>
+</div>
+</section>
+
+<section id="shop">
+<div class="heading">
+<div class="eyebrow">Our selection</div>
+<h2>Featured Jewellery</h2>
+<p>Elegant designs for every special occasion.</p>
+</div>
+<div class="toolbar">
+<input id="search" placeholder="Search jewellery..." oninput="renderProducts()">
+<select id="category" onchange="renderProducts()">
+<option value="">All categories</option>
+<option>Diamond Jewellery</option>
+<option>Gold Jewellery</option>
+<option>Rings</option>
+<option>Necklaces</option>
+<option>Earrings</option>
+<option>Pendants</option>
+<option>Bridal Jewellery</option>
+<option>Gemstones</option>
+</select>
+<select id="sort" onchange="renderProducts()">
+<option value="">Sort by</option>
+<option value="low">Price: Low to High</option>
+<option value="high">Price: High to Low</option>
+</select>
+</div>
+<div class="products" id="products"></div>
+</section>
+
+<section class="about" id="about">
+<div class="heading">
+<div class="eyebrow">Our story</div>
+<h2>Where Elegance Meets Tradition</h2>
+</div>
+<p>MH HUDLI Jewellery brings together timeless elegance and the beauty of tradition. Every piece is selected to celebrate life's meaningful moments and become a treasured part of your story.</p>
+</section>
+</main>
+
+<section id="admin" class="admin">
+<h2>MH HUDLI Jewellery — Admin</h2>
+<div class="notice">This is a browser-based demo admin panel. Product and order data are saved only in this browser. It is not secure production authentication. Do not use it for real customer or payment information.</div>
+<div class="adminnav">
+<button onclick="adminTab('productsAdmin')">Products</button>
+<button onclick="adminTab('ordersAdmin')">Orders</button>
+<button onclick="adminTab('settingsAdmin')">Store Settings</button>
+<button onclick="exportData()">Export Data</button>
+<button onclick="document.getElementById('importFile').click()">Import Data</button>
+<button onclick="showStore()">Back to Store</button>
+<input type="file" id="importFile" accept=".json" hidden onchange="importData(event)">
+</div>
+<div id="productsAdmin">
+<button class="gold" onclick="editProduct()">+ Add Product</button>
+<div class="tablewrap"><table><thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead><tbody id="productRows"></tbody></table></div>
+</div>
+<div id="ordersAdmin" style="display:none">
+<div class="tablewrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th><th>Update</th></tr></thead><tbody id="orderRows"></tbody></table></div>
+</div>
+<div id="settingsAdmin" style="display:none">
+<h3>Store Settings</h3>
+<label>Store name</label><input id="storeName">
+<label>WhatsApp number (country code + number)</label><input id="storePhone">
+<label>Shipping charge (₹)</label><input id="shipping">
+<label>Announcement bar</label><input id="storeAnnouncement">
+<button class="gold" onclick="saveSettings()">Save Settings</button>
+</div>
+</section>
+
+<footer id="contact">
+<h2>MH HUDLI Jewellery</h2>
+<p>Where Elegance Meets Tradition</p>
+<p>Kolhapur, Maharashtra, India</p>
+<p>Contact / WhatsApp: 9309031070</p>
+<p>For product enquiries, custom orders and assistance, contact us directly.</p>
+<p>© <span id="year"></span> MH HUDLI Jewellery. All rights reserved.</p>
+</footer>
+
+<a class="wa" href="https://wa.me/919309031070" target="_blank">WhatsApp Us</a>
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+<div class="modal">
+<div class="modalhead"><h2 id="modalTitle">Cart</h2><button class="close" onclick="closeModal()">×</button></div>
+<div id="modalBody"></div>
+</div>
+</div>
+<div class="toast" id="toast"></div>
 
 <script>
-/* CHANGE THIS PASSWORD BEFORE PUBLISHING */
-const MH_ADMIN_PASSWORD = "CHANGE_THIS_PASSWORD";
+const imageFallback="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80";
+const defaults=[
+{id:"MH001",name:"Classic Diamond Ring",category:"Rings",price:24999,stock:5,image:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80",description:"Elegant diamond-inspired ring for special moments."},
+{id:"MH002",name:"Gold Statement Necklace",category:"Gold Jewellery",price:38999,stock:4,image:"https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=80",description:"A timeless necklace with traditional elegance."},
+{id:"MH003",name:"Diamond Pendant",category:"Pendants",price:15999,stock:8,image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",description:"A delicate pendant for everyday sophistication."},
+{id:"MH004",name:"Bridal Earrings",category:"Bridal Jewellery",price:29999,stock:3,image:"https://images.unsplash.com/photo-1635767798638-3665a7e8f8c7?auto=format&fit=crop&w=700&q=80",description:"Beautiful earrings for your unforgettable day."}
+];
+let db=JSON.parse(localStorage.getItem("mh_hudli_db")||"null")||{
+products:defaults.map(x=>({...x})),orders:[],
+settings:{name:"MH HUDLI Jewellery",phone:"919309031070",shipping:99,announcement:"A CELEBRATION OF ELEGANCE · MH HUDLI JEWELLERY"}
+};
+let cart=JSON.parse(localStorage.getItem("mh_hudli_cart")||"[]");
+let editingId=null;
 
-/* Admin access */
-function mhaOpen(){
-  const password = prompt("Enter MH HUDLI admin password:");
-
-  if(password !== MH_ADMIN_PASSWORD){
-    alert("Incorrect password.");
-    return;
-  }
-
-  document.getElementById("mh-admin").classList.add("active");
-  mhaLoadProducts();
-  mhaLoadOrders();
+function saveDB(){localStorage.setItem("mh_hudli_db",JSON.stringify(db))}
+function saveCart(){localStorage.setItem("mh_hudli_cart",JSON.stringify(cart));updateCartCount()}
+function money(n){return "₹"+Number(n||0).toLocaleString("en-IN")}
+function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(s){let t=document.getElementById("toast");t.textContent=s;t.style.display="block";setTimeout(()=>t.style.display="none",2500)}
+function updateCartCount(){document.getElementById("cartCount").textContent=cart.reduce((a,c)=>a+c.qty,0)}
+function filterCategory(c){document.getElementById("category").value=c;renderProducts()}
+function renderProducts(){
+let list=[...db.products],q=document.getElementById("search").value.toLowerCase(),cat=document.getElementById("category").value,sort=document.getElementById("sort").value;
+list=list.filter(p=>(p.name+" "+p.category).toLowerCase().includes(q)&&(!cat||p.category===cat));
+if(sort==="low")list.sort((a,b)=>a.price-b.price);if(sort==="high")list.sort((a,b)=>b.price-a.price);
+document.getElementById("products").innerHTML=list.map(p=>`
+<div class="product">
+<img src="${safe(p.image||imageFallback)}" alt="${safe(p.name)}" onerror="this.src='${imageFallback}'">
+<div class="product-info">
+<h3>${safe(p.name)}</h3><p>${safe(p.category)}</p>
+<div class="price">${money(p.price)}</div>
+<p>${p.stock>0?p.stock+" available":"Contact for availability"}</p>
+<div class="actions">
+<button onclick="addCart('${safe(p.id)}')">Add to Cart</button>
+<button class="gold" onclick="buyNow('${safe(p.id)}')">Buy Now</button>
+</div>
+</div></div>`).join("")||"<p>No products found.</p>";
 }
-
-function mhaClose(){
-  document.getElementById("mh-admin").classList.remove("active");
+function addCart(id){let p=db.products.find(x=>x.id===id);if(!p)return;let c=cart.find(x=>x.id===id);if(c)c.qty++;else cart.push({id,qty:1});saveCart();toast("Added to cart")}
+function buyNow(id){addCart(id);openCart()}
+function openCart(){
+let rows=cart.map(c=>{let p=db.products.find(x=>x.id===c.id);return p?`<div class="row"><img src="${safe(p.image)}"><div><b>${safe(p.name)}</b><br>${money(p.price)}<br><button onclick="changeQty('${p.id}',-1)">−</button> ${c.qty} <button onclick="changeQty('${p.id}',1)">+</button></div><b>${money(p.price*c.qty)}</b></div>`:""}).join("");
+let subtotal=cart.reduce((a,c)=>a+(db.products.find(p=>p.id===c.id)?.price||0)*c.qty,0);
+let shipping=subtotal?Number(db.settings.shipping||0):0;
+openModal("Your Cart",`${rows||"<p>Your cart is empty.</p>"}<div class="row"><b>Subtotal</b><b>${money(subtotal)}</b></div><div class="row"><span>Shipping</span><span>${money(shipping)}</span></div><div class="row"><b>Total</b><b>${money(subtotal+shipping)}</b></div>${subtotal?'<button class="gold" onclick="checkout()">Proceed to Checkout</button>':""}`);
 }
-
-function mhaTab(name,button){
-  document.querySelectorAll(".mha-section").forEach(section=>{
-    section.classList.remove("active");
-  });
-
-  document.querySelectorAll(".mha-tab").forEach(tab=>{
-    tab.classList.remove("active");
-  });
-
-  document.getElementById("mha-"+name).classList.add("active");
-  button.classList.add("active");
-
-  if(name==="products") mhaLoadProducts();
-  if(name==="payments") mhaLoadOrders();
+function changeQty(id,n){let c=cart.find(x=>x.id===id);if(c){c.qty+=n;if(c.qty<=0)cart=cart.filter(x=>x.id!==id)}saveCart();openCart()}
+function openModal(title,body){document.getElementById("modalTitle").textContent=title;document.getElementById("modalBody").innerHTML=body;document.getElementById("overlay").classList.add("show")}
+function closeModal(){document.getElementById("overlay").classList.remove("show")}
+function checkout(){
+let subtotal=cart.reduce((a,c)=>a+(db.products.find(p=>p.id===c.id)?.price||0)*c.qty,0),shipping=Number(db.settings.shipping||0);
+openModal("Checkout",`<form onsubmit="placeOrder(event)">
+<label>Full name *</label><input id="customerName" required>
+<label>Phone number *</label><input id="customerPhone" required>
+<label>Email (optional)</label><input id="customerEmail" type="email">
+<label>Delivery address *</label><textarea id="customerAddress" required></textarea>
+<p><b>Order total: ${money(subtotal+shipping)}</b></p>
+<p class="notice">Demo checkout: this does not collect payment or connect to a payment gateway.</p>
+<button class="gold">Place Demo Order</button></form>`);
 }
-
-/* PRODUCT MANAGEMENT */
-
-function mhaSaveProducts(){
-  localStorage.setItem(
-    "mh_hudli_products",
-    JSON.stringify(products)
-  );
+function placeOrder(e){
+e.preventDefault();
+let subtotal=cart.reduce((a,c)=>a+(db.products.find(p=>p.id===c.id)?.price||0)*c.qty,0);
+let order={id:"MHH"+Date.now(),date:new Date().toISOString(),customer:{name:document.getElementById("customerName").value,phone:document.getElementById("customerPhone").value,email:document.getElementById("customerEmail").value,address:document.getElementById("customerAddress").value},items:cart.map(c=>({...c})),subtotal,total:subtotal+Number(db.settings.shipping||0),status:"Order Placed"};
+db.orders.unshift(order);saveDB();cart=[];saveCart();closeModal();toast("Demo order placed");
+let msg=`Hello MH HUDLI Jewellery, I placed demo order ${order.id}. Name: ${order.customer.name}. Total: ${money(order.total)}. Please confirm availability and payment details.`;
+window.open("https://wa.me/"+db.settings.phone+"?text="+encodeURIComponent(msg),"_blank");
 }
-
-function mhaLoadProducts(){
-  const saved = localStorage.getItem("mh_hudli_products");
-
-  if(saved){
-    try{
-      const savedProducts = JSON.parse(saved);
-
-      savedProducts.forEach(savedProduct=>{
-        const original = products.find(
-          p=>p.id===savedProduct.id
-        );
-
-        if(original){
-          original.price = savedProduct.price;
-          original.old = savedProduct.old;
-          original.image = savedProduct.image || "";
-          original.name = savedProduct.name;
-        }
-      });
-    }catch(error){
-      console.error("Product data error",error);
-    }
-  }
-
-  const container = document.getElementById("mha-product-list");
-  container.innerHTML = "";
-
-  products.forEach(product=>{
-    const card = document.createElement("div");
-    card.className = "mha-card";
-
-    card.innerHTML = `
-      <h3>${product.name}</h3>
-
-      <div class="mha-field">
-        <label>Product Name</label>
-        <input id="mha-name-${product.id}"
-          value="${mhaEscape(product.name)}">
-      </div>
-
-      <div class="mha-field">
-        <label>Selling Price (₹)</label>
-        <input type="number" min="0"
-          id="mha-price-${product.id}"
-          value="${product.price}">
-      </div>
-
-      <div class="mha-field">
-        <label>Original Price (₹)</label>
-        <input type="number" min="0"
-          id="mha-old-${product.id}"
-          value="${product.old}">
-      </div>
-
-      <div class="mha-field">
-        <label>Product Photo URL</label>
-        <input type="url"
-          id="mha-image-${product.id}"
-          value="${mhaEscape(product.image || "")}"
-          placeholder="https://your-image-link.jpg">
-      </div>
-
-      <button class="mha-btn"
-        onclick="mhaSaveProduct(${product.id})">
-        SAVE PRODUCT
-      </button>
-
-      <div class="mha-status" id="mha-status-${product.id}"></div>
-    `;
-
-    container.appendChild(card);
-  });
+function loginAdmin(){let p=prompt('Enter demo admin code: hudli-demo');if(p==="hudli-demo"){document.getElementById("store").style.display="none";document.querySelector("header").style.display="none";document.querySelector("footer").style.display="none";document.querySelector(".wa").style.display="none";document.getElementById("admin").classList.add("show");renderAdmin();window.scrollTo(0,0)}else if(p!==null)toast("Incorrect demo code")}
+function showStore(){document.getElementById("admin").classList.remove("show");document.getElementById("store").style.display="";document.querySelector("header").style.display="";document.querySelector("footer").style.display="";document.querySelector(".wa").style.display="";window.scrollTo(0,0)}
+function adminTab(id){["productsAdmin","ordersAdmin","settingsAdmin"].forEach(x=>document.getElementById(x).style.display=x===id?"block":"none");renderAdmin()}
+function renderAdmin(){
+document.getElementById("productRows").innerHTML=db.products.map(p=>`<tr><td><img width="45" src="${safe(p.image)}"></td><td>${safe(p.name)}</td><td>${safe(p.category)}</td><td>${money(p.price)}</td><td>${p.stock}</td><td><button onclick="editProduct('${p.id}')">Edit</button><button onclick="deleteProduct('${p.id}')">Delete</button></td></tr>`).join("");
+document.getElementById("orderRows").innerHTML=db.orders.map(o=>`<tr><td>${safe(o.id)}</td><td>${safe(o.customer.name)}<br>${safe(o.customer.phone)}</td><td>${money(o.total)}</td><td>${safe(o.status)}</td><td><select onchange="updateOrder('${o.id}',this.value)">${["Order Placed","Processing","Shipped","Delivered","Cancelled"].map(s=>`<option ${s===o.status?"selected":""}>${s}</option>`).join("")}</select></td></tr>`).join("")||"<tr><td colspan='5'>No orders yet.</td></tr>";
+document.getElementById("storeName").value=db.settings.name;
+document.getElementById("storePhone").value=db.settings.phone;
+document.getElementById("shipping").value=db.settings.shipping;
+document.getElementById("storeAnnouncement").value=db.settings.announcement;
 }
-
-function mhaSaveProduct(id){
-  const product = products.find(p=>p.id===id);
-  if(!product)return;
-
-  const name = document.getElementById("mha-name-"+id).value.trim();
-  const price = Number(document.getElementById("mha-price-"+id).value);
-  const old = Number(document.getElementById("mha-old-"+id).value);
-  const image = document.getElementById("mha-image-"+id).value.trim();
-
-  if(!name || price<0 || old<0 || !Number.isFinite(price)){
-    alert("Please enter valid product details.");
-    return;
-  }
-
-  product.name = name;
-  product.price = price;
-  product.old = old;
-  product.image = image;
-
-  mhaSaveProducts();
-
-  /* Refresh the storefront product display */
-  if(typeof renderProducts==="function"){
-    renderProducts();
-  }
-
-  document.getElementById("mha-status-"+id).textContent =
-    "Product saved successfully.";
+function editProduct(id){
+let p=id?db.products.find(x=>x.id===id):{id:"MH"+Date.now(),name:"",category:"Diamond Jewellery",price:0,stock:0,image:"",description:""};
+editingId=id||null;
+openModal(id?"Edit Product":"Add Product",`<form onsubmit="saveProduct(event)">
+<label>Product name</label><input id="pName" value="${safe(p.name)}" required>
+<label>Product ID / SKU</label><input id="pId" value="${safe(p.id)}" required>
+<label>Category</label><select id="pCategory">${["Diamond Jewellery","Gold Jewellery","Rings","Necklaces","Earrings","Pendants","Bridal Jewellery","Gemstones"].map(c=>`<option ${c===p.category?"selected":""}>${c}</option>`).join("")}</select>
+<label>Price (₹)</label><input id="pPrice" type="number" min="0" value="${p.price}" required>
+<label>Stock</label><input id="pStock" type="number" min="0" value="${p.stock}">
+<label>Image URL</label><input id="pImage" value="${safe(p.image)}" placeholder="https://...">
+<label>Or upload image (browser demo)</label><input type="file" accept="image/*" onchange="uploadImage(event)">
+<label>Description</label><textarea id="pDesc">${safe(p.description)}</textarea>
+<button class="gold">Save Product</button></form>`);
 }
-
-/* PAYMENT AND ORDER MANAGEMENT */
-
-/*
-  Orders must be saved during checkout.
-  This listener records checkout details from the existing website.
-*/
-
-document.getElementById("checkoutForm").addEventListener(
-  "submit",
-  function(event){
-
-    if(!cart || cart.length===0)return;
-
-    const order = {
-      id:"MH"+Date.now(),
-      date:new Date().toLocaleString("en-IN"),
-      name:document.getElementById("customerName").value,
-      phone:document.getElementById("customerPhone").value,
-      address:document.getElementById("customerAddress").value,
-      method:document.getElementById("paymentMethod").value,
-      items:cart.map(item=>({
-        name:item.name,
-        price:item.price,
-        qty:item.qty
-      })),
-      total:cart.reduce(
-        (sum,item)=>sum+item.price*item.qty,0
-      ),
-      paymentStatus:"Pending",
-      orderStatus:"New"
-    };
-
-    const orders = JSON.parse(
-      localStorage.getItem("mh_hudli_orders") || "[]"
-    );
-
-    orders.unshift(order);
-
-    localStorage.setItem(
-      "mh_hudli_orders",
-      JSON.stringify(orders)
-    );
-  },
-  true
-);
-
-/* Display saved orders */
-
-function mhaLoadOrders(){
-  const orders = JSON.parse(
-    localStorage.getItem("mh_hudli_orders") || "[]"
-  );
-
-  const container = document.getElementById("mha-order-list");
-  container.innerHTML = "";
-
-  if(!orders.length){
-    container.innerHTML =
-      '<div class="mha-empty">No orders have been recorded yet.</div>';
-    return;
-  }
-
-  orders.forEach(order=>{
-    const card = document.createElement("div");
-    card.className =
-      "mha-order "+(order.paymentStatus==="Paid"?"paid":"");
-
-    const items = (order.items || []).map(item=>
-      `${mhaEscape(item.name)} × ${item.qty} — ₹${item.price*item.qty}`
-    ).join("<br>");
-
-    card.innerHTML = `
-      <h3>Order ${mhaEscape(order.id)}</h3>
-
-      <small>
-        Date: ${mhaEscape(order.date)}<br>
-        Customer: ${mhaEscape(order.name)}<br>
-        Mobile: ${mhaEscape(order.phone)}<br>
-        Address: ${mhaEscape(order.address)}<br>
-        Payment method: ${mhaEscape(order.method)}<br>
-        Items:<br>${items}<br><br>
-        Total: ₹${order.total}<br>
-        Payment status: <strong>${mhaEscape(order.paymentStatus)}</strong><br>
-        Order status: ${mhaEscape(order.orderStatus)}
-      </small>
-
-      <br><br>
-
-      <button class="mha-btn"
-        onclick="mhaConfirmPayment('${order.id}')">
-        CONFIRM PAYMENT
-      </button>
-
-      <button class="mha-btn secondary"
-        onclick="mhaUpdateOrder('${order.id}')">
-        UPDATE ORDER STATUS
-      </button>
-
-      <button class="mha-btn secondary"
-        onclick="mhaDeleteOrder('${order.id}')">
-        DELETE ORDER
-      </button>
-    `;
-
-    container.appendChild(card);
-  });
+function uploadImage(e){let f=e.target.files[0];if(!f)return;if(f.size>1000000){toast("Use an image under 1 MB");return}let r=new FileReader();r.onload=()=>document.getElementById("pImage").value=r.result;r.readAsDataURL(f)}
+function saveProduct(e){
+e.preventDefault();let p={id:document.getElementById("pId").value.trim(),name:document.getElementById("pName").value.trim(),category:document.getElementById("pCategory").value,price:Number(document.getElementById("pPrice").value),stock:Number(document.getElementById("pStock").value||0),image:document.getElementById("pImage").value||imageFallback,description:document.getElementById("pDesc").value};
+if(db.products.some(x=>x.id===p.id&&x.id!==editingId)){toast("Product ID already exists");return}
+if(editingId)db.products=db.products.map(x=>x.id===editingId?p:x);else db.products.unshift(p);
+saveDB();closeModal();renderProducts();renderAdmin();toast("Product saved");
 }
-
-/* Manually confirm after checking payment received */
-
-function mhaConfirmPayment(id){
-  const confirmed = confirm(
-    "Have you verified that this payment was received in your bank or UPI account?"
-  );
-
-  if(!confirmed)return;
-
-  const orders = JSON.parse(
-    localStorage.getItem("mh_hudli_orders") || "[]"
-  );
-
-  const order = orders.find(o=>o.id===id);
-  if(!order)return;
-
-  order.paymentStatus = "Paid";
-  order.orderStatus = "Confirmed";
-  order.confirmedAt = new Date().toLocaleString("en-IN");
-
-  localStorage.setItem(
-    "mh_hudli_orders",
-    JSON.stringify(orders)
-  );
-
-  mhaLoadOrders();
+function deleteProduct(id){if(confirm("Delete this product?")){db.products=db.products.filter(p=>p.id!==id);cart=cart.filter(c=>c.id!==id);saveDB();saveCart();renderProducts();renderAdmin();toast("Product deleted")}}
+function updateOrder(id,status){let o=db.orders.find(x=>x.id===id);if(o){o.status=status;saveDB();toast("Order status updated")}}
+function saveSettings(){
+db.settings={name:document.getElementById("storeName").value,phone:document.getElementById("storePhone").value.replace(/\D/g,""),shipping:Number(document.getElementById("shipping").value||0),announcement:document.getElementById("storeAnnouncement").value};
+saveDB();document.getElementById("announcement").textContent=db.settings.announcement;toast("Settings saved");
 }
-
-/* Update order status */
-
-function mhaUpdateOrder(id){
-  const status = prompt(
-    "Enter order status:\nConfirmed\nProcessing\nShipped\nDelivered\nCancelled"
-  );
-
-  if(!status)return;
-
-  const orders = JSON.parse(
-    localStorage.getItem("mh_hudli_orders") || "[]"
-  );
-
-  const order = orders.find(o=>o.id===id);
-  if(!order)return;
-
-  order.orderStatus = status;
-
-  localStorage.setItem(
-    "mh_hudli_orders",
-    JSON.stringify(orders)
-  );
-
-  mhaLoadOrders();
-}
-
-/* Delete order */
-
-function mhaDeleteOrder(id){
-  if(!confirm("Delete this order from this browser?"))return;
-
-  const orders = JSON.parse(
-    localStorage.getItem("mh_hudli_orders") || "[]"
-  );
-
-  const updated = orders.filter(o=>o.id!==id);
-
-  localStorage.setItem(
-    "mh_hudli_orders",
-    JSON.stringify(updated)
-  );
-
-  mhaLoadOrders();
-}
-
-/* Safe text helper */
-
-function mhaEscape(value){
-  return String(value ?? "").replace(/[&<>"']/g,char=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  }[char]));
-}
+function exportData(){let b=new Blob([JSON.stringify(db,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="mh-hudli-store-data.json";a.click()}
+function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!Array.isArray(x.products)||!Array.isArray(x.orders))throw 0;db=x;saveDB();renderProducts();renderAdmin();toast("Data imported")}catch{toast("Invalid data file")}};r.readAsText(f)}
+document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("announcement").textContent=db.settings.announcement;
+renderProducts();updateCartCount();
 </script>
+</body>
+</html>
