@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUDLI LUXE | Where Elegance Meets Tradition</title>
+
+<style>
+:root{
+  --pink:#f6d8df;
+  --pink-dark:#e8b9c5;
+  --gold:#d6b36a;
+  --gold-light:#f3dfb0;
+  --ivory:#fff8f4;
+  --cream:#fff1eb;
+  --brown:#49352d;
+  --brown-light:#72584c;
+  --white:#fffdfb;
+  --border:#ead5cc;
+  --shadow:0 12px 35px rgba(104,65,61,.10);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  background:linear-gradient(135deg,#fff8f4,#f9e2e7,#fff1dc);
+  color:var(--brown);
+}
+
+button,input,select,textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.topbar{
+  background:linear-gradient(90deg,#e8b9c5,#f3dfb0,#e8b9c5);
+  text-align:center;
+  padding:10px;
+  font-size:12px;
+  letter-spacing:2px;
+  color:#49352d;
+}
+
+header{
+  background:rgba(255,248,244,.95);
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(12px);
+}
+
+.nav{
+  max-width:1300px;
+  margin:auto;
+  padding:18px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-size:30px;
+  letter-spacing:5px;
+  font-weight:bold;
+  color:var(--brown);
+}
+
+.logo span{
+  color:#b68b40;
+}
+
+.navlinks{
+  display:flex;
+  gap:25px;
+  font-size:14px;
+}
+
+.navlinks a:hover{
+  color:#b68b40;
+}
+
+.nav-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.icon-btn{
+  border:1px solid var(--border);
+  background:#fffaf7;
+  padding:10px 14px;
+  border-radius:30px;
+  color:var(--brown);
+}
+
+.hero{
+  min-height:570px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:40px;
+  padding:70px 7%;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(255,255,255,.7),transparent 35%),
+    linear-gradient(120deg,#f7dce3,#fff2e3 55%,#f1d5b3);
+}
+
+.hero-content{
+  max-width:570px;
+}
+
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-size:12px;
+  color:#a47a35;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:clamp(42px,6vw,76px);
+  line-height:1.05;
+  font-weight:normal;
+  margin-bottom:22px;
+}
+
+.hero h1 span{
+  color:#b68b40;
+  font-style:italic;
+}
+
+.hero p{
+  line-height:1.8;
+  font-size:17px;
+  color:var(--brown-light);
+  max-width:480px;
+  margin-bottom:30px;
+}
+
+.btn{
+  border:0;
+  border-radius:30px;
+  padding:14px 25px;
+  display:inline-block;
+  transition:.25s;
+  font-size:14px;
+}
+
+.btn-gold{
+  background:linear-gradient(135deg,#d6b36a,#f3dfb0,#c9a052);
+  color:#49352d;
+  box-shadow:0 6px 18px rgba(182,139,64,.18);
+}
+
+.btn-gold:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(182,139,64,.25);
+}
+
+.btn-pink{
+  background:#f3d1da;
+  color:var(--brown);
+}
+
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--gold);
+  color:var(--brown);
+}
+
+.hero-image{
+  height:460px;
+  border-radius:48% 48% 8px 8px;
+  overflow:hidden;
+  border:8px solid rgba(255,255,255,.55);
+  box-shadow:var(--shadow);
+}
+
+.hero-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.section{
+  max-width:1300px;
+  margin:auto;
+  padding:70px 5%;
+}
+
+.section-heading{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.section-heading .eyebrow{
+  margin-bottom:12px;
+}
+
+.section-heading h2{
+  font-size:38px;
+  font-weight:normal;
+}
+
+.section-heading p{
+  color:var(--brown-light);
+  margin-top:12px;
+  line-height:1.7;
+}
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.category{
+  position:relative;
+  height:270px;
+  border-radius:18px;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+}
+
+.category img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.category:hover img{
+  transform:scale(1.06);
+}
+
+.category-title{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:24px;
+  background:linear-gradient(transparent,rgba(73,53,45,.75));
+  color:white;
+  font-size:25px;
+}
+
+.shop-controls{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+
+.search-box{
+  padding:12px 18px;
+  border:1px solid var(--border);
+  border-radius:30px;
+  background:#fffaf7;
+  min-width:230px;
+  outline:none;
+}
+
+.filter-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.filter-btn{
+  border:1px solid var(--border);
+  background:#fffaf7;
+  padding:10px 17px;
+  border-radius:30px;
+  color:var(--brown);
+}
+
+.filter-btn.active{
+  background:linear-gradient(135deg,#e8b9c5,#f3dfb0);
+  border-color:var(--gold);
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+}
+
+.product-card{
+  background:rgba(255,253,251,.9);
+  border:1px solid #f0ddd6;
+  border-radius:16px;
+  overflow:hidden;
+  transition:.3s;
+  box-shadow:0 5px 20px rgba(104,65,61,.05);
+}
+
+.product-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+}
+
+.product-image{
+  height:260px;
+  background:#f8e5e7;
+  position:relative;
+  overflow:hidden;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.product-badge{
+  position:absolute;
+  top:13px;
+  left:13px;
+  background:#f3dfb0;
+  color:#49352d;
+  font-size:11px;
+  padding:7px 11px;
+  border-radius:20px;
+  letter-spacing:1px;
+}
+
+.product-info{
+  padding:18px;
+}
+
+.product-category{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#b68b40;
+  margin-bottom:8px;
+}
+
+.product-info h3{
+  font-size:18px;
+  font-weight:normal;
+  margin-bottom:10px;
+}
+
+.product-price{
+  font-size:18px;
+  margin-bottom:15px;
+}
+
+.product-price del{
+  font-size:13px;
+  color:#a9948b;
+  margin-left:7px;
+}
+
+.add-btn{
+  width:100%;
+  padding:12px;
+  border:1px solid var(--gold);
+  background:linear-gradient(135deg,#f3dfb0,#e8b9c5);
+  border-radius:30px;
+  color:var(--brown);
+}
+
+.add-btn:hover{
+  background:linear-gradient(135deg,#e8b9c5,#f3dfb0);
+}
+
+.story{
+  background:linear-gradient(120deg,#f7dce3,#fff4e5,#f1d5b3);
+  padding:70px 7%;
+  text-align:center;
+}
+
+.story-inner{
+  max-width:800px;
+  margin:auto;
+}
+
+.story h2{
+  font-size:42px;
+  font-weight:normal;
+  margin-bottom:20px;
+}
+
+.story p{
+  line-height:1.9;
+  color:var(--brown-light);
+  font-size:17px;
+}
+
+.newsletter{
+  text-align:center;
+  padding:60px 5%;
+  background:#fff8f4;
+}
+
+.newsletter h2{
+  font-size:32px;
+  font-weight:normal;
+  margin-bottom:12px;
+}
+
+.newsletter p{
+  color:var(--brown-light);
+  margin-bottom:22px;
+}
+
+.newsletter form{
+  display:flex;
+  max-width:450px;
+  margin:auto;
+  gap:8px;
+}
+
+.newsletter input{
+  flex:1;
+  min-width:0;
+  padding:13px 18px;
+  border:1px solid var(--border);
+  border-radius:30px;
+  background:white;
+}
+
+footer{
+  background:linear-gradient(120deg,#f0cbd5,#f3dfb0);
+  padding:45px 5%;
+  text-align:center;
+}
+
+footer .logo{
+  margin-bottom:15px;
+}
+
+footer p{
+  font-size:13px;
+  line-height:1.8;
+}
+
+.footer-links{
+  margin:20px 0;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  font-size:13px;
+}
+
+/* CART DRAWER */
+
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(73,53,45,.35);
+  z-index:100;
+}
+
+.overlay.show{
+  display:block;
+}
+
+.cart-drawer{
+  position:fixed;
+  top:0;
+  right:-450px;
+  width:min(420px,100%);
+  height:100%;
+  background:#fff8f4;
+  z-index:101;
+  transition:.3s;
+  padding:25px;
+  display:flex;
+  flex-direction:column;
+  box-shadow:-10px 0 35px rgba(73,53,45,.12);
+}
+
+.cart-drawer.open{
+  right:0;
+}
+
+.drawer-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--border);
+}
+
+.drawer-header h2{
+  font-weight:normal;
+}
+
+.close-btn{
+  border:0;
+  background:transparent;
+  font-size:25px;
+  color:var(--brown);
+}
+
+.cart-items{
+  flex:1;
+  overflow:auto;
+  padding:15px 0;
+}
+
+.cart-item{
+  display:flex;
+  gap:12px;
+  padding:14px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.cart-item img{
+  width:70px;
+  height:75px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.cart-item-info{
+  flex:1;
+}
+
+.cart-item-info h4{
+  font-size:15px;
+  font-weight:normal;
+  margin-bottom:7px;
+}
+
+.quantity-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:8px;
+}
+
+.quantity-controls button{
+  width:25px;
+  height:25px;
+  border:1px solid var(--border);
+  background:#f8e5e7;
+  border-radius:50%;
+}
+
+.cart-total{
+  border-top:1px solid var(--border);
+  padding-top:20px;
+}
+
+.cart-total div{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  font-size:18px;
+}
+
+.cart-total .btn{
+  width:100%;
+  text-align:center;
+}
+
+/* CHECKOUT MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(73,53,45,.45);
+  z-index:150;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  background:#fff8f4;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px;
+  width:min(520px,100%);
+  max-height:90vh;
+  overflow:auto;
+  box-shadow:var(--shadow);
+}
+
+.modal-box h2{
+  font-size:28px;
+  font-weight:normal;
+  margin-bottom:20px;
+}
+
+.form-group{
+  margin-bottom:14px;
+}
+
+.form-group label{
+  display:block;
+  font-size:13px;
+  margin-bottom:7px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:#fffdfb;
+  outline:none;
+  color:var(--brown);
+}
+
+.form-group textarea{
+  resize:vertical;
+}
+
+.modal-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.modal-actions .btn{
+  flex:1;
+  text-align:center;
+}
+
+/* ADMIN */
+
+.admin-panel{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:200;
+  background:#fff8f4;
+  overflow:auto;
+  padding:25px;
+}
+
+.admin-panel.show{
+  display:block;
+}
+
+.admin-container{
+  max-width:1000px;
+  margin:auto;
+}
+
+.admin-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.admin-header h2{
+  font-weight:normal;
+  font-size:30px;
+}
+
+.admin-form{
+  background:#fffdfb;
+  border:1px solid var(--border);
+  padding:25px;
+  border-radius:18px;
+  margin-bottom:30px;
+}
+
+.admin-form h3{
+  font-weight:normal;
+  margin-bottom:20px;
+}
+
+.admin-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.admin-products{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.admin-product{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:15px;
+  background:white;
+}
+
+.admin-product img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+
+.admin-product h4{
+  margin-bottom:8px;
+  font-weight:normal;
+}
+
+.admin-product button{
+  margin-top:8px;
+  margin-right:5px;
+  padding:7px 12px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:#f8e5e7;
+  color:var(--brown);
+}
+
+.notice{
+  background:#f8e5e7;
+  border:1px solid var(--border);
+  padding:13px;
+  border-radius:10px;
+  margin-bottom:20px;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.empty-message{
+  text-align:center;
+  padding:35px;
+  color:#987f74;
+}
+
+.whatsapp-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:40;
+  background:#d8e9c7;
+  color:#38552c;
+  border:1px solid #b6d19b;
+  border-radius:30px;
+  padding:13px 18px;
+  box-shadow:var(--shadow);
+  font-size:14px;
+}
+
+@media(max-width:1000px){
+  .product-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .navlinks{
+    display:none;
+  }
+
+  .hero{
+    padding:50px 5%;
+  }
+}
+
+@media(max-width:700px){
+  .hero{
+    grid-template-columns:1fr;
+    padding:45px 6%;
+  }
+
+  .hero-image{
+    height:350px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .categories{
+    grid-template-columns:1fr;
+  }
+
+  .category{
+    height:230px;
+  }
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:13px;
+  }
+
+  .product-image{
+    height:190px;
+  }
+
+  .product-info{
+    padding:13px;
+  }
+
+  .product-info h3{
+    font-size:15px;
+  }
+
+  .product-price{
+    font-size:16px;
+  }
+
+  .section{
+    padding:50px 5%;
+  }
+
+  .section-heading h2{
+    font-size:30px;
+  }
+
+  .shop-controls{
+    flex-direction:column;
+  }
+
+  .search-box{
+    width:100%;
+  }
+
+  .admin-grid{
+    grid-template-columns:1fr;
+  }
+
+  .admin-products{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .newsletter form{
+    flex-direction:column;
+  }
+
+  .logo{
+    font-size:22px;
+    letter-spacing:3px;
+  }
+
+  .nav{
+    padding:15px 4%;
+  }
+}
+
+@media(max-width:420px){
+  .product-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .product-image{
+    height:160px;
+  }
+
+  .product-info h3{
+    font-size:14px;
+  }
+
+  .product-price{
+    font-size:14px;
+  }
+
+  .add-btn{
+    padding:10px 5px;
+    font-size:12px;
+  }
+
+  .admin-products{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  ✧ A LITTLE LUXURY, A LOT OF LOVE ✧ FREE SHIPPING ON SELECT ORDERS
+</div>
+
+<header>
+  <nav class="nav">
+    <a href="#" class="logo">HUDLI <span>LUXE</span></a>
+
+    <div class="navlinks">
+      <a href="#home">Home</a>
+      <a href="#categories">Collections</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">Our Story</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="openCart()">Bag <span id="cart-count">0</span></button>
+      <button class="icon-btn" onclick="openAdmin()">Admin</button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">The Art of Fine Jewellery</div>
+    <h1>Elegance<br>in Every <span>Detail</span></h1>
+    <p>
+      Discover beautiful jewellery made to celebrate your moments.
+      Timeless designs, delicate details and a touch of luxury.
+    </p>
+    <a href="#shop" class="btn btn-gold">Explore Collection</a>
+  </div>
+
+  <div class="hero-image">
+    <img
+      src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1000&q=85"
+      alt="Elegant jewellery collection">
+  </div>
+</section>
+
+<section class="section" id="categories">
+  <div class="section-heading">
+    <div class="eyebrow">Find Your Favourite</div>
+    <h2>Shop by Collection</h2>
+    <p>Pieces that make every occasion feel special.</p>
+  </div>
+
+  <div class="categories">
+    <div class="category" onclick="filterCategory('Necklace')">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80" alt="Necklaces">
+      <div class="category-title">Necklaces</div>
+    </div>
+
+    <div class="category" onclick="filterCategory('Ring')">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="Rings">
+      <div class="category-title">Rings</div>
+    </div>
+
+    <div class="category" onclick="filterCategory('Bracelet')">
+      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80" alt="Bracelets">
+      <div class="category-title">Bracelets</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="section-heading">
+    <div class="eyebrow">The HUDLI LUXE Edit</div>
+    <h2>Our Jewellery</h2>
+    <p>Discover your next treasured piece.</p>
+  </div>
+
+  <div class="shop-controls">
+    <input class="search-box" id="search" type="search" placeholder="Search jewellery..." oninput="renderProducts()">
+
+    <div class="filter-buttons">
+      <button class="filter-btn active" onclick="filterCategory('All',this)">All</button>
+      <button class="filter-btn" onclick="filterCategory('Necklace',this)">Necklaces</button>
+      <button class="filter-btn" onclick="filterCategory('Ring',this)">Rings</button>
+      <button class="filter-btn" onclick="filterCategory('Bracelet',this)">Bracelets</button>
+    </div>
+  </div>
+
+  <div class="product-grid" id="product-grid"></div>
+</section>
+
+<section class="story" id="about">
+  <div class="story-inner">
+    <div class="eyebrow">Our Philosophy</div>
+    <h2>Where Elegance<br>Meets Tradition</h2>
+    <p>
+      HUDLI LUXE celebrates the beauty of timeless jewellery.
+      Inspired by tradition and designed for modern elegance,
+      our collection brings a special touch to every celebration.
+      Find jewellery that reflects your style and keeps your
+      memories shining for years to come.
+    </p>
+  </div>
+</section>
+
+<section class="newsletter">
+  <h2>Stay in the Glow</h2>
+  <p>Discover new collections and beautiful jewellery inspiration.</p>
+
+  <form onsubmit="subscribe(event)">
+    <input type="email" id="newsletter-email" placeholder="Your email address" required>
+    <button class="btn btn-gold" type="submit">Subscribe</button>
+  </form>
+</section>
+
+<footer>
+  <div class="logo">HUDLI <span>LUXE</span></div>
+  <p>Where Elegance Meets Tradition</p>
+
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#about">About</a>
+    <a href="mailto:subhanhudli7@gmail.com">Contact</a>
+  </div>
+
+  <p>Customer Support: 9309031070</p>
+  <p>© <span id="year"></span> HUDLI LUXE. All rights reserved.</p>
+</footer>
+
+<button class="whatsapp-float" onclick="contactWhatsApp()">WhatsApp Us</button>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="drawer-header">
+    <h2>Your Shopping Bag</h2>
+    <button class="close-btn" onclick="closeCart()">×</button>
+  </div>
+
+  <div class="cart-items" id="cart-items"></div>
+
+  <div class="cart-total">
+    <div>
+      <span>Total</span>
+      <strong id="cart-total">₹0</strong>
+    </div>
+    <button class="btn btn-gold" onclick="openCheckout()">Proceed to Checkout</button>
+  </div>
+</aside>
+
+<!-- CHECKOUT -->
+<div class="modal" id="checkout-modal">
+  <div class="modal-box">
+    <button class="close-btn" style="float:right" onclick="closeCheckout()">×</button>
+    <h2>Checkout</h2>
+
+    <form id="checkout-form" onsubmit="submitOrder(event)">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input id="customer-name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input id="customer-phone" type="tel" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input id="customer-email" type="email">
+      </div>
+
+      <div class="form-group">
+        <label>Delivery Address</label>
+        <textarea id="customer-address" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Payment Method</label>
+        <select id="payment-method">
+          <option value="UPI">Pay using UPI</option>
+          <option value="COD">Cash on Delivery (confirm availability)</option>
+        </select>
+      </div>
+
+      <div class="notice">
+        After submitting your order, WhatsApp will open with your order
+        details. For UPI, you can pay using your UPI app.
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline" onclick="closeCheckout()">Cancel</button>
+        <button type="submit" class="btn btn-gold">Place Order</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-panel" id="admin-panel">
+  <div class="admin-container">
+    <div class="admin-header">
+      <h2>HUDLI LUXE Admin</h2>
+      <button class="btn btn-outline" onclick="closeAdmin()">Close Admin</button>
+    </div>
+
+    <div class="notice">
+      This is a browser-based demo admin panel. Products are saved in this
+      browser's local storage. For a live store, use a secure server and
+      database. Never use a public front-end password for real security.
+    </div>
+
+    <div class="admin-form">
+      <h3 id="admin-form-title">Add New Product</h3>
+
+      <form id="product-form" onsubmit="saveProduct(event)">
+        <input type="hidden" id="edit-product-id">
+
+        <div class="admin-grid">
+          <div class="form-group">
+            <label>Product Name</label>
+            <input id="admin-name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Category</label>
+            <select id="admin-category" required>
+              <option value="Necklace">Necklace</option>
+              <option value="Ring">Ring</option>
+              <option value="Bracelet">Bracelet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Price (₹)</label>
+            <input id="admin-price" type="number" min="0" required>
+          </div>
+
+          <div class="form-group">
+            <label>Original Price (optional)</label>
+            <input id="admin-old-price" type="number" min="0">
+          </div>
+
+          <div class="form-group">
+            <label>Stock Quantity</label>
+            <input id="admin-stock" type="number" min="0" value="10">
+          </div>
+
+          <div class="form-group">
+            <label>Product Image URL</label>
+            <input id="admin-image" type="url" required>
+          </div>
+        </div>
+
+        <button class="btn btn-gold" type="submit">Save Product</button>
+        <button class="btn btn-outline" type="button" onclick="resetProductForm()">Clear Form</button>
+      </form>
+    </div>
+
+    <h3 style="font-weight:normal;margin-bottom:20px;">Manage Products</h3>
+    <div class="admin-products" id="admin-products"></div>
+  </div>
+</div>
+
+<script>
+/* -------------------------------------------------
+   HUDLI LUXE SETTINGS
+-------------------------------------------------- */
+
+const WHATSAPP_NUMBER = "919309031070";
+const UPI_ID = "subhanhudli7@okicici";
+const STORE_EMAIL = "subhanhudli7@gmail.com";
+
+/* -------------------------------------------------
+   DEFAULT PRODUCTS
+-------------------------------------------------- */
+
+const defaultProducts = [
+  {
+    id:1,
+    name:"Rose Glow Necklace",
+    category:"Necklace",
+    price:2499,
+    oldPrice:3299,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:2,
+    name:"Elegant Pearl Necklace",
+    category:"Necklace",
+    price:2899,
+    oldPrice:3699,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:3,
+    name:"Classic Gold Necklace",
+    category:"Necklace",
+    price:3199,
+    oldPrice:3999,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:4,
+    name:"Floral Charm Necklace",
+    category:"Necklace",
+    price:1999,
+    oldPrice:2599,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:5,
+    name:"Golden Elegance Necklace",
+    category:"Necklace",
+    price:3499,
+    oldPrice:4299,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1599459183200-59c7687a0279?auto=format&fit=crop&w=800&q=80"
+  },
+
+  {
+    id:6,
+    name:"Classic Sparkle Ring",
+    category:"Ring",
+    price:1499,
+    oldPrice:1999,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:7,
+    name:"Rose Gold Ring",
+    category:"Ring",
+    price:1799,
+    oldPrice:2299,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:8,
+    name:"Crystal Promise Ring",
+    category:"Ring",
+    price:2199,
+    oldPrice:2799,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1603561596112-0a132b757442?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:9,
+    name:"Golden Blossom Ring",
+    category:"Ring",
+    price:1299,
+    oldPrice:1799,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:10,
+    name:"Luxury Statement Ring",
+    category:"Ring",
+    price:2599,
+    oldPrice:3299,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1603561596112-0a132b757442?auto=format&fit=crop&w=800&q=80"
+  },
+
+  {
+    id:11,
+    name:"Golden Charm Bracelet",
+    category:"Bracelet",
+    price:1699,
+    oldPrice:2199,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:12,
+    name:"Elegant Chain Bracelet",
+    category:"Bracelet",
+    price:1899,
+    oldPrice:2499,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:13,
+    name:"Rose Petal Bracelet",
+    category:"Bracelet",
+    price:1399,
+    oldPrice:1899,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:14,
+    name:"Classic Pearl Bracelet",
+    category:"Bracelet",
+    price:2299,
+    oldPrice:2999,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id:15,
+    name:"Luxe Gold Bracelet",
+    category:"Bracelet",
+    price:2799,
+    oldPrice:3499,
+    stock:10,
+    image:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80"
+  }
+];
+
+/* -------------------------------------------------
+   LOCAL STORAGE
+-------------------------------------------------- */
+
+let products = JSON.parse(localStorage.getItem("hudli_products")) || defaultProducts;
+let cart = JSON.parse(localStorage.getItem("hudli_cart")) || [];
+let currentCategory = "All";
+
+function saveProducts(){
+  localStorage.setItem("hudli_products",JSON.stringify(products));
+}
+
+function saveCart(){
+  localStorage.setItem("hudli_cart",JSON.stringify(cart));
+}
+
+/* -------------------------------------------------
+   PRODUCT DISPLAY
+-------------------------------------------------- */
+
+function formatPrice(price){
+  return "₹" + Number(price).toLocaleString("en-IN");
+}
+
+function renderProducts(){
+  const grid = document.getElementById("product-grid");
+  const search = document.getElementById("search").value.toLowerCase();
+
+  let filtered = products.filter(product=>{
+    const categoryMatch =
+      currentCategory === "All" ||
+      product.category === currentCategory;
+
+    const searchMatch =
+      product.name.toLowerCase().includes(search) ||
+      product.category.toLowerCase().includes(search);
+
+    return categoryMatch && searchMatch;
+  });
+
+  if(filtered.length === 0){
+    grid.innerHTML = '<div class="empty-message">No products found.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(product=>`
+    <div class="product-card">
+      <div class="product-image">
+        <img src="${escapeHTML(product.image)}"
+             alt="${escapeHTML(product.name)}"
+             loading="lazy"
+             onerror="this.src='https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80'">
+        <div class="product-badge">HUDLI LUXE</div>
+      </div>
+
+      <div class="product-info">
+        <div class="product-category">${escapeHTML(product.category)}</div>
+        <h3>${escapeHTML(product.name)}</h3>
+
+        <div class="product-price">
+          ${formatPrice(product.price)}
+          ${product.oldPrice ? `<del>${formatPrice(product.oldPrice)}</del>` : ""}
+        </div>
+
+        <button class="add-btn"
+          onclick="addToCart(${product.id})"
+          ${product.stock <= 0 ? "disabled" : ""}>
+          ${product.stock <= 0 ? "Out of Stock" : "Add to Bag"}
+        </button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function filterCategory(category,button){
+  currentCategory = category;
+
+  document.querySelectorAll(".filter-btn").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  if(button){
+    button.classList.add("active");
+  }else{
+    document.querySelectorAll(".filter-btn").forEach(btn=>{
+      if(btn.textContent.toLowerCase().includes(category.toLowerCase())){
+        btn.classList.add("active");
+      }
+    });
+  }
+
+  renderProducts();
+  document.getElementById("shop").scrollIntoView({behavior:"smooth"});
+}
+
+/* -------------------------------------------------
+   CART
+-------------------------------------------------- */
+
+function addToCart(id){
+  const product = products.find(p=>p.id===id);
+
+  if(!product || product.stock<=0){
+    alert("This product is currently unavailable.");
+    return;
+  }
+
+  const existing = cart.find(item=>item.id===id);
+
+  if(existing){
+    if(existing.quantity >= product.stock){
+      alert("Sorry, only " + product.stock + " items are available.");
+      return;
+    }
+    existing.quantity++;
+  }else{
+    cart.push({
+      id:product.id,
+      quantity:1
+    });
+  }
+
+  saveCart();
+  renderCart();
+  openCart();
+}
+
+function changeQuantity(id,change){
+  const item = cart.find(item=>item.id===id);
+  const product = products.find(p=>p.id===id);
+
+  if(!item || !product) return;
+
+  item.quantity += change;
+
+  if(item.quantity<=0){
+    cart = cart.filter(item=>item.id!==id);
+  }else if(item.quantity>product.stock){
+    item.quantity = product.stock;
+    alert("Available stock: " + product.stock);
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function getCartTotal(){
+  return cart.reduce((total,item)=>{
+    const product = products.find(p=>p.id===item.id);
+    return total + (product ? product.price*item.quantity : 0);
+  },0);
+}
+
+function renderCart(){
+  const container = document.getElementById("cart-items");
+  const count = cart.reduce((total,item)=>total+item.quantity,0);
+
+  document.getElementById("cart-count").textContent = count;
+  document.getElementById("cart-total").textContent = formatPrice(getCartTotal());
+
+  if(cart.length===0){
+    container.innerHTML = '<div class="empty-message">Your bag is waiting for something beautiful.</div>';
+    return;
+  }
+
+  container.innerHTML = cart.map(item=>{
+    const product = products.find(p=>p.id===item.id);
+    if(!product) return "";
+
+    return `
+      <div class="cart-item">
+        <img src="${escapeHTML(product.image)}" alt="">
+        <div class="cart-item-info">
+          <h4>${escapeHTML(product.name)}</h4>
+          <strong>${formatPrice(product.price)}</strong>
+
+          <div class="quantity-controls">
+            <button onclick="changeQuantity(${product.id},-1)">−</button>
+            <span>${item.quantity}</span>
+            <button onclick="changeQuantity(${product.id},1)">+</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function openCart(){
+  document.getElementById("cart-drawer").classList.add("open");
+  document.getElementById("overlay").classList.add("show");
+}
+
+function closeCart(){
+  document.getElementById("cart-drawer").classList.remove("open");
+  document.getElementById("overlay").classList.remove("show");
+}
+
+/* -------------------------------------------------
+   CHECKOUT & ORDER
+-------------------------------------------------- */
+
+function openCheckout(){
+  if(cart.length===0){
+    alert("Your shopping bag is empty.");
+    return;
+  }
+
+  closeCart();
+  document.getElementById("checkout-modal").classList.add("show");
+}
+
+function closeCheckout(){
+  document.getElementById("checkout-modal").classList.remove("show");
+}
+
+function submitOrder(event){
+  event.preventDefault();
+
+  if(cart.length===0){
+    alert("Your cart is empty.");
+    return;
+  }
+
+  const name = document.getElementById("customer-name").value.trim();
+  const phone = document.getElementById("customer-phone").value.trim();
+  const email = document.getElementById("customer-email").value.trim();
+  const address = document.getElementById("customer-address").value.trim();
+  const payment = document.getElementById("payment-method").value;
+
+  const total = getCartTotal();
+  const orderId = "HL" + Date.now().toString().slice(-8);
+
+  let orderDetails = "";
+
+  cart.forEach(item=>{
+    const product = products.find(p=>p.id===item.id);
+
+    if(product){
+      orderDetails +=
+        "\n• " + product.name +
+        " x " + item.quantity +
+        " = " + formatPrice(product.price*item.quantity);
+    }
+  });
+
+  const message =
+    "✨ HUDLI LUXE ORDER ✨\n\n" +
+    "Order ID: " + orderId + "\n" +
+    "Name: " + name + "\n" +
+    "Phone: " + phone + "\n" +
+    "Email: " + (email || "Not provided") + "\n\n" +
+    "Products:" + orderDetails + "\n\n" +
+    "Total: " + formatPrice(total) + "\n" +
+    "Payment Method: " + payment + "\n\n" +
+    "Delivery Address:\n" + address + "\n\n" +
+    "Please confirm my order.";
+
+  const encodedMessage = encodeURIComponent(message);
+
+  closeCheckout();
+
+  if(payment==="UPI"){
+    const upiLink =
+      "upi://pay?pa=" + encodeURIComponent(UPI_ID) +
+      "&pn=" + encodeURIComponent("HUDLI LUXE") +
+      "&am=" + encodeURIComponent(total.toFixed(2)) +
+      "&cu=INR" +
+      "&tn=" + encodeURIComponent("Order " + orderId);
+
+    // Open UPI payment app
+    window.location.href = upiLink;
+
+    // WhatsApp order message after a short delay
+    setTimeout(()=>{
+      window.open(
+        "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodedMessage,
+        "_blank"
+      );
+    },1500);
+
+  }else{
+    window.open(
+      "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodedMessage,
+      "_blank"
+    );
+  }
+
+  // Save order locally for this browser
+  const orders = JSON.parse(localStorage.getItem("hudli_orders") || "[]");
+
+  orders.push({
+    orderId,
+    name,
+    phone,
+    email,
+    address,
+    payment,
+    total,
+    date:new Date().toISOString(),
+    items:cart
+  });
+
+  localStorage.setItem("hudli_orders",JSON.stringify(orders));
+
+  // Reduce demo stock
+  cart.forEach(item=>{
+    const product = products.find(p=>p.id===item.id);
+    if(product){
+      product.stock = Math.max(0,product.stock-item.quantity);
+    }
+  });
+
+  saveProducts();
+
+  cart = [];
+  saveCart();
+  renderCart();
+  renderProducts();
+
+  document.getElementById("checkout-form").reset();
+}
+
+function contactWhatsApp(){
+  const message = encodeURIComponent(
+    "Hello HUDLI LUXE, I would like to know more about your jewellery collection."
+  );
+
+  window.open(
+    "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message,
+    "_blank"
+  );
+}
+
+/* -------------------------------------------------
+   ADMIN PANEL
+-------------------------------------------------- */
+
+function openAdmin(){
+  const password = prompt("Enter admin password:");
+
+  // Demo password only. Do not use this for real security.
+  if(password !== "luxe123"){
+    alert("Incorrect password.");
+    return;
+  }
+
+  document.getElementById("admin-panel").classList.add("show");
+  renderAdminProducts();
+}
+
+function closeAdmin(){
+  document.getElementById("admin-panel").classList.remove("show");
+}
+
+function renderAdminProducts(){
+  const container = document.getElementById("admin-products");
+
+  if(products.length===0){
+    container.innerHTML = '<div class="empty-message">No products added yet.</div>';
+    return;
+  }
+
+  container.innerHTML = products.map(product=>`
+    <div class="admin-product">
+      <img src="${escapeHTML(product.image)}" alt="">
+      <h4>${escapeHTML(product.name)}</h4>
+      <p>${escapeHTML(product.category)}</p>
+      <p>${formatPrice(product.price)}</p>
+      <p>Stock: ${product.stock}</p>
+
+      <button onclick="editProduct(${product.id})">Edit</button>
+      <button onclick="deleteProduct(${product.id})">Delete</button>
+    </div>
+  `).join("");
+}
+
+function saveProduct(event){
+  event.preventDefault();
+
+  const editId = Number(document.getElementById("edit-product-id").value);
+
+  const productData = {
+    id:editId || Date.now(),
+    name:document.getElementById("admin-name").value.trim(),
+    category:document.getElementById("admin-category").value,
+    price:Number(document.getElementById("admin-price").value),
+    oldPrice:Number(document.getElementById("admin-old-price").value) || 0,
+    stock:Number(document.getElementById("admin-stock").value),
+    image:document.getElementById("admin-image").value.trim()
+  };
+
+  if(!productData.name || !productData.image){
+    alert("Please enter product name and image URL.");
+    return;
+  }
+
+  if(editId){
+    products = products.map(product=>
+      product.id===editId ? productData : product
+    );
+  }else{
+    products.push(productData);
+  }
+
+  saveProducts();
+  renderProducts();
+  renderAdminProducts();
+  resetProductForm();
+
+  alert("Product saved successfully.");
+}
+
+function editProduct(id){
+  const product = products.find(p=>p.id===id);
+  if(!product) return;
+
+  document.getElementById("edit-product-id").value = product.id;
+  document.getElementById("admin-name").value = product.name;
+  document.getElementById("admin-category").value = product.category;
+  document.getElementById("admin-price").value = product.price;
+  document.getElementById("admin-old-price").value = product.oldPrice || "";
+  document.getElementById("admin-stock").value = product.stock;
+  document.getElementById("admin-image").value = product.image;
+
+  document.getElementById("admin-form-title").textContent = "Edit Product";
+
+  document.querySelector(".admin-form").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function deleteProduct(id){
+  if(!confirm("Delete this product?")) return;
+
+  products = products.filter(product=>product.id!==id);
+  cart = cart.filter(item=>item.id!==id);
+
+  saveProducts();
+  saveCart();
+
+  renderProducts();
+  renderCart();
+  renderAdminProducts();
+}
+
+function resetProductForm(){
+  document.getElementById("product-form").reset();
+  document.getElementById("edit-product-id").value = "";
+  document.getElementById("admin-form-title").textContent = "Add New Product";
+}
+
+/* -------------------------------------------------
+   NEWSLETTER DEMO
+-------------------------------------------------- */
+
+function subscribe(event){
+  event.preventDefault();
+
+  const email = document.getElementById("newsletter-email").value;
+
+  alert("Thank you for your interest, " + email + "!");
+
+  document.getElementById("newsletter-email").value = "";
+}
+
+/* -------------------------------------------------
+   SECURITY / TEXT HELPER
+-------------------------------------------------- */
+
+function escapeHTML(value){
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+/* -------------------------------------------------
+   INITIALIZE
+-------------------------------------------------- */
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>
