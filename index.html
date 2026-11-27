@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HUDLI LUXE | Fine Jewellery</title>
+
+<style>
+:root {
+    --black: #171411;
+    --cream: #f7f2e9;
+    --rose: #b98b70;
+    --gold: #c6a15b;
+    --white: #fffdf9;
+    --gray: #77716a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    color: var(--black);
+    font-family: Georgia, serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+textarea {
+    font-family: Arial, sans-serif;
+}
+
+/* TOP BAR */
+
+.topbar {
+    background: var(--black);
+    color: var(--gold);
+    text-align: center;
+    padding: 10px;
+    font: 10px Arial, sans-serif;
+    letter-spacing: 2px;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 6%;
+    background: var(--white);
+    border-bottom: 1px solid #e6ded2;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.logo {
+    font-size: 27px;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--rose);
+}
+
+.logo small {
+    display: block;
+    font: 9px Arial, sans-serif;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    font: 11px Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+nav a:hover {
+    color: var(--rose);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    padding: 8%;
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(15,12,10,.90),
+            rgba(15,12,10,.35)
+        ),
+        url("https://images.unsplash.com/photo-1611652022419-a9419f74343?auto=format&fit=crop&w=1800&q=90");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 580px;
+}
+
+.hero-label {
+    color: var(--gold);
+    font: 11px Arial, sans-serif;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 7vw, 85px);
+    font-weight: normal;
+    line-height: 1.05;
+    margin-bottom: 25px;
+}
+
+.hero h1 em {
+    color: #e3c8b4;
+    font-weight: normal;
+}
+
+.hero p {
+    font: 14px/1.9 Arial, sans-serif;
+    color: #e8e3dc;
+    max-width: 430px;
+    margin-bottom: 30px;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    background: var(--rose);
+    color: white;
+    border: 1px solid var(--rose);
+    font: 11px Arial, sans-serif;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: transparent;
+    color: var(--rose);
+}
+
+/* GENERAL SECTION */
+
+section {
+    padding: 75px 6%;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.heading small {
+    display: block;
+    color: var(--rose);
+    font: 10px Arial, sans-serif;
+    letter-spacing: 3px;
+    margin-bottom: 13px;
+}
+
+.heading h2 {
+    font-size: clamp(30px, 4vw, 45px);
+    font-weight: normal;
+}
+
+.heading p {
+    color: var(--gray);
+    font: 12px Arial, sans-serif;
+    margin-top: 12px;
+}
+
+/* CATEGORY */
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.category {
+    height: 230px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.category:hover img {
+    transform: scale(1.08);
+}
+
+.category::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,.7));
+}
+
+.category h3 {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    color: white;
+    font-size: 19px;
+    font-weight: normal;
+    z-index: 2;
+}
+
+/* PRODUCTS */
+
+.shop {
+    background: var(--white);
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.filters button {
+    padding: 11px 16px;
+    border: 1px solid #d7c8b8;
+    background: transparent;
+    cursor: pointer;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.filters button.active,
+.filters button:hover {
+    background: var(--black);
+    color: var(--gold);
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product {
+    background: var(--cream);
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.product-image {
+    height: 270px;
+    overflow: hidden;
+    background: #eee5d9;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.product:hover img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 17px 10px 0;
+}
+
+.product-category {
+    font: 9px Arial, sans-serif;
+    color: var(--rose);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.product h3 {
+    font-size: 17px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.price {
+    font: 14px Arial, sans-serif;
+    color: #98743b;
+    margin-bottom: 15px;
+}
+
+.product button {
+    border: 1px solid var(--black);
+    padding: 10px 15px;
+    background: transparent;
+    font-size: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background: var(--black);
+    color: var(--gold);
+}
+
+/* STORY */
+
+.story {
+    background: #e9dfd2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.story img {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+}
+
+.story h2 {
+    font-size: 45px;
+    font-weight: normal;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.story h2 em {
+    color: var(--rose);
+    font-weight: normal;
+}
+
+.story p {
+    font: 13px/1.9 Arial, sans-serif;
+    color: #62594f;
+    margin-bottom: 20px;
+}
+
+/* ORDER AND PAYMENT */
+
+.order-section {
+    background: var(--white);
+}
+
+.order-box {
+    max-width: 650px;
+    margin: auto;
+    padding: 35px;
+    background: var(--cream);
+    border: 1px solid #e1d3c0;
+}
+
+.order-box label {
+    display: block;
+    font: 12px Arial, sans-serif;
+    margin: 15px 0 7px;
+}
+
+.order-box input,
+.order-box textarea,
+.order-box select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d8cbbb;
+    background: white;
+    font-size: 13px;
+}
+
+.order-box textarea {
+    min-height: 85px;
+}
+
+.order-box .button {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.payment-note {
+    color: var(--gray);
+    font: 11px/1.7 Arial, sans-serif;
+    margin-top: 15px;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--black);
+    color: white;
+    text-align: center;
+    padding: 45px 6% 25px;
+}
+
+.footer-logo {
+    color: var(--gold);
+    font-size: 28px;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+}
+
+footer p {
+    color: #ccc;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.copyright {
+    border-top: 1px solid #39342e;
+    padding-top: 20px;
+    color: #999;
+    font: 10px Arial, sans-serif;
+}
+
+/* WHATSAPP */
+
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #25D366;
+    color: white;
+    display: grid;
+    place-items: center;
+    font: 25px Arial, sans-serif;
+    z-index: 100;
+}
+
+/* MOBILE */
+
+@media(max-width:900px) {
+    .categories {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width:600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 13px;
+    }
+
+    nav a {
+        font-size: 9px;
+    }
+
+    .hero {
+        min-height: 550px;
+        padding: 7%;
+        background-position: 60% center;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+    }
+
+    section {
+        padding: 55px 5%;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category {
+        height: 180px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .product-image {
+        height: 190px;
+    }
+
+    .product h3 {
+        font-size: 14px;
+    }
+
+    .story {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .story img {
+        height: 280px;
+    }
+
+    .story h2 {
+        font-size: 36px;
+    }
+
+    .order-box {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    M.H. HUDLI JEWELLERY • WHERE ELEGANCE MEETS TRADITION
+</div>
+
+<header>
+    <a href="#" class="logo">
+        HUDLI <span>LUXE</span>
+        <small>M.H. HUDLI JEWELLERY</small>
+    </a>
+
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#collections">COLLECTIONS</a>
+        <a href="#shop">SHOP</a>
+        <a href="#story">OUR STORY</a>
+        <a href="#order">ORDER</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-label">THE ART OF FINE JEWELLERY</div>
+
+        <h1>
+            Elegance<br>
+            <em>Reimagined.</em>
+        </h1>
+
+        <p>
+            Discover beautiful jewellery for your most precious
+            moments. A collection inspired by timeless elegance
+            and the beauty of tradition.
+        </p>
+
+        <a href="#shop" class="button">
+            EXPLORE COLLECTION
+        </a>
+    </div>
+</section>
+
+<section id="collections">
+    <div class="heading">
+        <small>DISCOVER HUDLI LUXE</small>
+        <h2>Our Collections</h2>
+        <p>Find the jewellery that speaks to your style.</p>
+    </div>
+
+    <div class="categories">
+        <a class="category" href="#shop" onclick="filterCategory('Necklaces')">
+            <img src="images/necklace01.jpg" alt="Necklaces">
+            <h3>Necklaces</h3>
+        </a>
+
+        <a class="category" href="#shop" onclick="filterCategory('Earrings')">
+            <img src="images/earrings01.jpg" alt="Earrings">
+            <h3>Earrings</h3>
+        </a>
+
+        <a class="category" href="#shop" onclick="filterCategory('Rings')">
+            <img src="images/ring01.jpg" alt="Rings">
+            <h3>Rings</h3>
+        </a>
+
+        <a class="category" href="#shop" onclick="filterCategory('Pendants')">
+            <img src="images/pendant01.jpg" alt="Pendants">
+            <h3>Pendants</h3>
+        </a>
+
+        <a class="category" href="#shop" onclick="filterCategory('Bangles')">
+            <img src="images/bangle01.jpg" alt="Bangles">
+            <h3>Bangles</h3>
+        </a>
+    </div>
+</section>
+
+<section class="shop" id="shop">
+    <div class="heading">
+        <small>THE HUDLI LUXE EDIT</small>
+        <h2>Shop Jewellery</h2>
+        <p>Explore elegant designs for every occasion.</p>
+    </div>
+
+    <div class="filters">
+        <button class="active" onclick="filterCategory('All',this)">ALL</button>
+        <button onclick="filterCategory('Necklaces',this)">NECKLACES</button>
+        <button onclick="filterCategory('Earrings',this)">EARRINGS</button>
+        <button onclick="filterCategory('Rings',this)">RINGS</button>
+        <button onclick="filterCategory('Pendants',this)">PENDANTS</button>
+        <button onclick="filterCategory('Bangles',this)">BANGLES</button>
+    </div>
+
+    <div class="products" id="products"></div>
+</section>
+
+<section class="story" id="story">
+    <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1000&q=85" alt="Jewellery detail">
+
+    <div>
+        <small style="color:#b98b70;letter-spacing:3px;">
+            THE M.H. HUDLI STORY
+        </small>
+
+        <h2>
+            Where Elegance<br>
+            <em>Meets Tradition.</em>
+        </h2>
+
+        <p>
+            At M.H. HUDLI, jewellery is a celebration of
+            individuality, heritage and precious memories.
+        </p>
+
+        <p>
+            Our collection is designed for the moments
+            that deserve to be remembered forever.
+        </p>
+
+        <a href="#shop" class="button">
+            DISCOVER OUR COLLECTION
+        </a>
+    </div>
+</section>
+
+<!-- ORDER FORM -->
+
+<section class="order-section" id="order">
+    <div class="heading">
+        <small>SECURE YOUR FAVOURITE PIECE</small>
+        <h2>Place Your Order</h2>
+        <p>Fill in your details and continue to WhatsApp and UPI.</p>
+    </div>
+
+    <div class="order-box">
+        <form id="orderForm">
+
+            <label>Product</label>
+            <input id="orderProduct" required placeholder="Jewellery product name">
+
+            <label>Price</label>
+            <input id="orderPrice" required placeholder="₹ Product price">
+
+            <label>Your Name</label>
+            <input id="customerName" required placeholder="Full name">
+
+            <label>Mobile Number</label>
+            <input id="customerPhone" type="tel" required placeholder="Your phone number">
+
+            <label>Quantity</label>
+            <input id="quantity" type="number" min="1" value="1" required>
+
+            <label>Delivery Address</label>
+            <textarea id="address" required placeholder="Complete delivery address"></textarea>
+
+            <button type="submit" class="button">
+                CONTINUE TO PAYMENT
+            </button>
+
+        </form>
+
+        <p class="payment-note">
+            After submitting your order, WhatsApp will open with your
+            order details. You can then make payment using the UPI
+            payment option and share your payment confirmation.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">HUDLI LUXE</div>
+    <p>Where Elegance Meets Tradition.</p>
+
+    <div class="copyright">
+        © <span id="year"></span> M.H. HUDLI Jewellery
+    </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/919309031070" target="_blank" aria-label="WhatsApp">
+    ☎
+</a>
+
+<script>
+
+/*
+  PRODUCT CATALOGUE
+
+  Replace product names, prices and image paths
+  with your actual jewellery products.
+*/
+
+const products = [
+    {
+        name: "Royal Necklace",
+        category: "Necklaces",
+        price: "₹12,500",
+        image: "images/necklace01.jpg"
+    },
+    {
+        name: "Elegant Earrings",
+        category: "Earrings",
+        price: "₹4,800",
+        image: "images/earrings01.jpg"
+    },
+    {
+        name: "Classic Diamond Ring",
+        category: "Rings",
+        price: "₹8,900",
+        image: "images/ring01.jpg"
+    },
+    {
+        name: "Luxury Pendant",
+        category: "Pendants",
+        price: "₹3,500",
+        image: "images/pendant01.jpg"
+    },
+    {
+        name: "Designer Bangles",
+        category: "Bangles",
+        price: "₹7,200",
+        image: "images/bangle01.jpg"
+    }
+];
+
+let currentCategory = "All";
+
+function renderProducts() {
+
+    const container = document.getElementById("products");
+
+    const filtered = products.filter(product =>
+        currentCategory === "All" ||
+        product.category === currentCategory
+    );
+
+    container.innerHTML = "";
+
+    filtered.forEach(product => {
+
+        const card = document.createElement("div");
+        card.className = "product";
+
+        card.innerHTML = `
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}">
+            </div>
+
+            <div class="product-info">
+                <div class="product-category">${product.category}</div>
+                <h3>${product.name}</h3>
+                <div class="price">${product.price}</div>
+
+                <button onclick="startOrder('${product.name}','${product.price}')">
+                    ORDER NOW
+                </button>
+            </div>
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+function filterCategory(category, button) {
+
+    currentCategory = category;
+
+    document.querySelectorAll(".filters button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    renderProducts();
+}
+
+function startOrder(name, price) {
+
+    document.getElementById("orderProduct").value = name;
+    document.getElementById("orderPrice").value = price;
+
+    document.getElementById("order").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+/*
+  PAYMENT SETTINGS
+
+  Replace the sample UPI ID below with your REAL UPI ID
+  from your bank or UPI payment app.
+
+  Do not guess your UPI ID from your phone number.
+*/
+
+const YOUR_UPI_ID = "subhanhudli7@okicici";
+const YOUR_BUSINESS_NAME = "M H HUDLI JEWELLERY";
+const YOUR_WHATSAPP_NUMBER = "919309031070";
+
+document.getElementById("orderForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const product = document.getElementById("orderProduct").value;
+    const price = document.getElementById("orderPrice").value;
+    const name = document.getElementById("customerName").value;
+    const phone = document.getElementById("customerPhone").value;
+    const quantity = document.getElementById("quantity").value;
+    const address = document.getElementById("address").value;
+
+    const message = `
+NEW ORDER - HUDLI LUXE
+
+Product: ${product}
+Price: ${price}
+Quantity: ${quantity}
+
+Customer Name: ${name}
+Customer Phone: ${phone}
+
+Delivery Address:
+${address}
+
+Please confirm availability and payment.
+`;
+
+    const whatsappURL =
+        "https://wa.me/" +
+        YOUR_WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(message);
+
+    /*
+      Open WhatsApp with the order details.
+      Customer must press Send.
+    */
+
+    window.open(whatsappURL, "_blank");
+
+    /*
+      Open UPI payment app.
+
+      This will work only after you enter your valid UPI ID.
+      Payment app availability depends on the customer's phone.
+    */
+
+    if (YOUR_UPI_ID !== "subhanhudli7@okicici") {
+
+        const upiURL =
+            "upi://pay" +
+            "?pa=" + encodeURIComponent(YOUR_UPI_ID) +
+            "&pn=" + encodeURIComponent(YOUR_BUSINESS_NAME) +
+            "&am=" + encodeURIComponent(
+                price.replace(/[₹, ]/g, "") * Number(quantity)
+            ) +
+            "&cu=INR" +
+            "&tn=" + encodeURIComponent("HUDLI LUXE jewellery order");
+
+        setTimeout(function() {
+            window.location.href = upiURL;
+        }, 1200);
+
+    } else {
+
+        alert(
+            "Please add your valid UPI ID in the website code to enable payment."
+        );
+    }
+
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderProducts();
+
+</script>
+
+</body>
+  </html>
